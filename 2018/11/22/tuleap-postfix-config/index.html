@@ -116,10 +116,14 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Tuleap使用postfix作为邮件转发工具，自行搭建邮件服务器比较麻烦，我们可以使用postfix + smtp实现发送邮件的功能，这里以QQ邮箱为例，Gmail、163等同理。 配置main.cf123456789101112131415161718192021$ vim /etc/postfix/main.cf#修改inet_interfaces = localhostinet_inter">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-22T02:30:04.925Z">
+<meta property="og:image" content="https://blog-1251789414.cos.ap-shanghai.myqcloud.com/tuleap-postfix-config-1.png">
+<meta property="og:image" content="https://blog-1251789414.cos.ap-shanghai.myqcloud.com/tuleap-postfix-config-2.png">
+<meta property="og:image" content="https://blog-1251789414.cos.ap-shanghai.myqcloud.com/tuleap-postfix-config-3.png">
+<meta property="og:updated_time" content="2018-11-22T02:52:28.416Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tuleap的postfix邮件设置">
 <meta name="twitter:description" content="Tuleap使用postfix作为邮件转发工具，自行搭建邮件服务器比较麻烦，我们可以使用postfix + smtp实现发送邮件的功能，这里以QQ邮箱为例，Gmail、163等同理。 配置main.cf123456789101112131415161718192021$ vim /etc/postfix/main.cf#修改inet_interfaces = localhostinet_inter">
+<meta name="twitter:image" content="https://blog-1251789414.cos.ap-shanghai.myqcloud.com/tuleap-postfix-config-1.png">
 
 
 
@@ -370,7 +374,7 @@
                 
               
 
-              <time title="创建时间：2018-11-22 10:04:33 / 修改时间：10:30:04" itemprop="dateCreated datePublished" datetime="2018-11-22T10:04:33+08:00">2018-11-22</time>
+              <time title="创建时间：2018-11-22 10:04:33 / 修改时间：10:52:28" itemprop="dateCreated datePublished" datetime="2018-11-22T10:04:33+08:00">2018-11-22</time>
             
 
             
@@ -451,8 +455,12 @@
         <p>Tuleap使用postfix作为邮件转发工具，自行搭建邮件服务器比较麻烦，我们可以使用postfix + smtp实现发送邮件的功能，这里以QQ邮箱为例，Gmail、163等同理。</p>
 <h3 id="配置main-cf"><a href="#配置main-cf" class="headerlink" title="配置main.cf"></a>配置main.cf</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">$ vim /etc/postfix/main.cf</span><br><span class="line"></span><br><span class="line"><span class="comment">#修改inet_interfaces = localhost</span></span><br><span class="line">inet_interfaces = all</span><br><span class="line"></span><br><span class="line"><span class="comment">#在文件最后添加</span></span><br><span class="line">myhostname = tuleap.example.com</span><br><span class="line">myorigin = <span class="variable">$mydomain</span></span><br><span class="line"></span><br><span class="line">relayhost = [smtp.qq.com]:587</span><br><span class="line"><span class="comment"># Enable SASL authentication</span></span><br><span class="line">smtp_sasl_auth_enable = yes</span><br><span class="line"><span class="comment"># Disallow methods that allow anonymous authentication</span></span><br><span class="line">smtp_sasl_security_options = noanonymous</span><br><span class="line"><span class="comment"># Location of sasl_passwd</span></span><br><span class="line">smtp_sasl_password_maps = <span class="built_in">hash</span>:/etc/postfix/sasl/sasl_passwd</span><br><span class="line"><span class="comment"># Enable STARTTLS encryption</span></span><br><span class="line">smtp_tls_security_level = encrypt</span><br><span class="line"><span class="comment"># Location of CA certificates</span></span><br><span class="line">smtp_tls_CAfile = /etc/postfix/server.pem</span><br><span class="line">smtp_generic_maps = <span class="built_in">hash</span>:/etc/postfix/generic</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<h3 id="配置QQ邮箱SMTP账户"><a href="#配置QQ邮箱SMTP账户" class="headerlink" title="配置QQ邮箱SMTP账户"></a>配置QQ邮箱SMTP账户</h3><p>创建账户配置文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir /etc/postfix/sasl</span><br><span class="line">$ vim /etc/postfix/sasl/sasl_passwd</span><br><span class="line"></span><br><span class="line">[smtp.qq.com]:587    xxxxxxxx@qq.com:password</span><br></pre></td></tr></table></figure>
+<h3 id="配置QQ邮箱SMTP账户"><a href="#配置QQ邮箱SMTP账户" class="headerlink" title="配置QQ邮箱SMTP账户"></a>配置QQ邮箱SMTP账户</h3><p>生成QQ邮箱smtp服务token</p>
+<p><img src="https://blog-1251789414.cos.ap-shanghai.myqcloud.com/tuleap-postfix-config-1.png" alt=""></p>
+<p><img src="https://blog-1251789414.cos.ap-shanghai.myqcloud.com/tuleap-postfix-config-2.png" alt=""></p>
+<p><img src="https://blog-1251789414.cos.ap-shanghai.myqcloud.com/tuleap-postfix-config-3.png" alt=""></p>
+<p>创建账户配置文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir /etc/postfix/sasl</span><br><span class="line">$ vim /etc/postfix/sasl/sasl_passwd</span><br><span class="line"></span><br><span class="line">[smtp.qq.com]:587    xxxxxxxx@qq.com:token</span><br></pre></td></tr></table></figure>
 <p>创建hash加密文件sasl_passwd.db</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ postmap /etc/postfix/sasl/sasl_passwd</span><br></pre></td></tr></table></figure>
 <h3 id="创建CA证书"><a href="#创建CA证书" class="headerlink" title="创建CA证书"></a>创建CA证书</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> /etc/ssl/certs/</span><br><span class="line">$ vim Makefile</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改证书有效期 DAYS 为合适的时间</span></span><br><span class="line">DAYS=xxx</span><br><span class="line"></span><br><span class="line">$ make server.pem</span><br><span class="line">$ mv server.pem /etc/postfix</span><br></pre></td></tr></table></figure>
