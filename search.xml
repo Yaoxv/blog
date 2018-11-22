@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[tuleap的安装]]></title>
+    <url>%2F2018%2F11%2F21%2Ftuleap-install%2F</url>
+    <content type="text"><![CDATA[系统CentOS 7 关闭SElinux修改selinux配置文件 12345678910111213$ vim /etc/selinux/config# This file controls the state of SELinux on the system.# SELINUX= can take one of these three values:# enforcing - SELinux security policy is enforced.# permissive - SELinux prints warnings instead of enforcing.# disabled - No SELinux policy is loaded.SELINUX=disabled# SELINUXTYPE= can take one of three two values:# targeted - Targeted processes are protected,# minimum - Modification of targeted policy. Only selected processes are protected.# mls - Multi Level Security protection.SELINUXTYPE=targeted 重启服务器 1$ shutdown -r now 验证selinux已关闭 123$ sestatusSELinux status: disabled 安装安装EPEL12$ yum install -y epel-release$ yum install -y centos-release-scl 安装 remi-safe 库1$ yum install -y https://rpms.remirepo.net/enterprise/remi-release-7.rpm 安装 Tuleap 库12345678$ vim /etc/yum.repos.d/Tuleap.repo[Tuleap]name=Tuleapbaseurl=https://ci.tuleap.net/yum/tuleap/rhel/7/dev/$basearchenabled=1gpgcheck=1gpgkey=https://ci.tuleap.net/yum/tuleap/gpg.key 安装 Tuleap12345678$ yum install -y \ rh-mysql57-mysql-server \ tuleap-plugin-agiledashboard \ tuleap-plugin-graphontrackers \ tuleap-theme-burningparrot \ tuleap-theme-flamingparrot \ tuleap-plugin-git \ tuleap-plugin-pullrequest 更多插件安装详见官方插件列表 配置数据库1234$ vim /etc/opt/rh/rh-mysql57/my.cnf.d/rh-mysql57-mysql-server.cnf#在[mysqld]下添加sql-mode=NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION 设置mysql开机自启 1$ systemctl enable rh-mysql57-mysqld 启动mysql 1$ systemctl start rh-mysql57-mysqld 设置mysql密码 1$ scl enable rh-mysql57 "mysqladmin -u root password" 启动 请勿重复执行该命令 12345/usr/share/tuleap/tools/setup.el7.sh \ --configure \ --server-name=tuleap.example.com \ --mysql-server=localhost \ --mysql-password=XXXXX server-name : 本地测试时设为localhost 确保防火墙开放所需端口 Web (TCP/80 &amp; TCP/443) SSH (git, admin): TCP/22 首次登陆登陆Tuleap (例如: tuleap.example.com) 默认的管理员密码在 /root/.tuleap_passwd 中可以找到]]></content>
+      <categories>
+        <category>Tuleap</category>
+      </categories>
+      <tags>
+        <tag>tuleap</tag>
+        <tag>php</tag>
+        <tag>agile management</tag>
+      </tags>
+  </entry>
+</search>
