@@ -108,25 +108,25 @@
 
 
 
-  <meta name="description" content="系统CentOS 7 关闭SElinux修改selinux配置文件 12345678910111213$ vim /etc/selinux/config# This file controls the state of SELinux on the system.# SELINUX= can take one of these three values:#     enforcing - SELi">
-<meta name="keywords" content="tuleap,php,agile management">
+  <meta name="description" content="Tuleap使用postfix作为邮件转发工具，自行搭建邮件服务器比较麻烦，我们可以使用postfix + smtp实现发送邮件的功能，这里以QQ邮箱为例，Gmail、163等同理。 配置main.cf123456789101112131415161718192021$ vim /etc/postfix/main.cf#修改inet_interfaces = localhostinet_inter">
+<meta name="keywords" content="tuleap,postfix,mail">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Tuleap的安装">
-<meta property="og:url" content="https://yaoxv.github.io/2018/11/21/tuleap-install/index.html">
+<meta property="og:title" content="Tuleap的postfix邮件设置">
+<meta property="og:url" content="https://yaoxv.github.io/2018/11/22/tuleap-postfix-config/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="系统CentOS 7 关闭SElinux修改selinux配置文件 12345678910111213$ vim /etc/selinux/config# This file controls the state of SELinux on the system.# SELINUX= can take one of these three values:#     enforcing - SELi">
+<meta property="og:description" content="Tuleap使用postfix作为邮件转发工具，自行搭建邮件服务器比较麻烦，我们可以使用postfix + smtp实现发送邮件的功能，这里以QQ邮箱为例，Gmail、163等同理。 配置main.cf123456789101112131415161718192021$ vim /etc/postfix/main.cf#修改inet_interfaces = localhostinet_inter">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-22T02:05:24.790Z">
+<meta property="og:updated_time" content="2018-11-22T02:30:04.925Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Tuleap的安装">
-<meta name="twitter:description" content="系统CentOS 7 关闭SElinux修改selinux配置文件 12345678910111213$ vim /etc/selinux/config# This file controls the state of SELinux on the system.# SELINUX= can take one of these three values:#     enforcing - SELi">
+<meta name="twitter:title" content="Tuleap的postfix邮件设置">
+<meta name="twitter:description" content="Tuleap使用postfix作为邮件转发工具，自行搭建邮件服务器比较麻烦，我们可以使用postfix + smtp实现发送邮件的功能，这里以QQ邮箱为例，Gmail、163等同理。 配置main.cf123456789101112131415161718192021$ vim /etc/postfix/main.cf#修改inet_interfaces = localhostinet_inter">
 
 
 
 
 
 
-  <link rel="canonical" href="https://yaoxv.github.io/2018/11/21/tuleap-install/">
+  <link rel="canonical" href="https://yaoxv.github.io/2018/11/22/tuleap-postfix-config/">
 
 
 
@@ -136,7 +136,7 @@
   };
 </script>
 
-  <title>Tuleap的安装 | Hexo</title>
+  <title>Tuleap的postfix邮件设置 | Hexo</title>
   
 
 
@@ -328,7 +328,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yaoxv.github.io/2018/11/21/tuleap-install/">
+    <link itemprop="mainEntityOfPage" href="https://yaoxv.github.io/2018/11/22/tuleap-postfix-config/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yaoxv">
@@ -345,7 +345,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Tuleap的安装
+          <h2 class="post-title" itemprop="name headline">Tuleap的postfix邮件设置
               
             
           </h2>
@@ -370,24 +370,12 @@
                 
               
 
-              <time title="创建时间：2018-11-21 16:58:02" itemprop="dateCreated datePublished" datetime="2018-11-21T16:58:02+08:00">2018-11-21</time>
+              <time title="创建时间：2018-11-22 10:04:33 / 修改时间：10:30:04" itemprop="dateCreated datePublished" datetime="2018-11-22T10:04:33+08:00">2018-11-22</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-11-22 10:05:24" itemprop="dateModified" datetime="2018-11-22T10:05:24+08:00">2018-11-22</time>
               
             
           </span>
@@ -419,9 +407,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/11/21/tuleap-install/#comments" itemprop="discussionUrl">
+                <a href="/2018/11/22/tuleap-postfix-config/#comments" itemprop="discussionUrl">
                 
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/11/21/tuleap-install/" itemprop="commentCount"></span>
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/11/22/tuleap-postfix-config/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -429,7 +417,7 @@
 
           
           
-             <span id="/2018/11/21/tuleap-install/" class="leancloud_visitors" data-flag-title="Tuleap的安装">
+             <span id="/2018/11/22/tuleap-postfix-config/" class="leancloud_visitors" data-flag-title="Tuleap的postfix邮件设置">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -460,40 +448,22 @@
       
 
       
-        <h3 id="系统"><a href="#系统" class="headerlink" title="系统"></a>系统</h3><p>CentOS 7</p>
-<h3 id="关闭SElinux"><a href="#关闭SElinux" class="headerlink" title="关闭SElinux"></a>关闭SElinux</h3><p>修改selinux配置文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ vim /etc/selinux/config</span><br><span class="line"></span><br><span class="line"><span class="comment"># This file controls the state of SELinux on the system.</span></span><br><span class="line"><span class="comment"># SELINUX= can take one of these three values:</span></span><br><span class="line"><span class="comment">#     enforcing - SELinux security policy is enforced.</span></span><br><span class="line"><span class="comment">#     permissive - SELinux prints warnings instead of enforcing.</span></span><br><span class="line"><span class="comment">#     disabled - No SELinux policy is loaded.</span></span><br><span class="line">SELINUX=disabled</span><br><span class="line"><span class="comment"># SELINUXTYPE= can take one of three two values:</span></span><br><span class="line"><span class="comment">#     targeted - Targeted processes are protected,</span></span><br><span class="line"><span class="comment">#     minimum - Modification of targeted policy. Only selected processes are protected.</span></span><br><span class="line"><span class="comment">#     mls - Multi Level Security protection.</span></span><br><span class="line">SELINUXTYPE=targeted</span><br></pre></td></tr></table></figure>
-<p>重启服务器</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ shutdown -r now</span><br></pre></td></tr></table></figure>
-<p>验证selinux已关闭</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sestatus</span><br><span class="line"></span><br><span class="line">SELinux status:                 disabled</span><br></pre></td></tr></table></figure>
+        <p>Tuleap使用postfix作为邮件转发工具，自行搭建邮件服务器比较麻烦，我们可以使用postfix + smtp实现发送邮件的功能，这里以QQ邮箱为例，Gmail、163等同理。</p>
+<h3 id="配置main-cf"><a href="#配置main-cf" class="headerlink" title="配置main.cf"></a>配置main.cf</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">$ vim /etc/postfix/main.cf</span><br><span class="line"></span><br><span class="line"><span class="comment">#修改inet_interfaces = localhost</span></span><br><span class="line">inet_interfaces = all</span><br><span class="line"></span><br><span class="line"><span class="comment">#在文件最后添加</span></span><br><span class="line">myhostname = tuleap.example.com</span><br><span class="line">myorigin = <span class="variable">$mydomain</span></span><br><span class="line"></span><br><span class="line">relayhost = [smtp.qq.com]:587</span><br><span class="line"><span class="comment"># Enable SASL authentication</span></span><br><span class="line">smtp_sasl_auth_enable = yes</span><br><span class="line"><span class="comment"># Disallow methods that allow anonymous authentication</span></span><br><span class="line">smtp_sasl_security_options = noanonymous</span><br><span class="line"><span class="comment"># Location of sasl_passwd</span></span><br><span class="line">smtp_sasl_password_maps = <span class="built_in">hash</span>:/etc/postfix/sasl/sasl_passwd</span><br><span class="line"><span class="comment"># Enable STARTTLS encryption</span></span><br><span class="line">smtp_tls_security_level = encrypt</span><br><span class="line"><span class="comment"># Location of CA certificates</span></span><br><span class="line">smtp_tls_CAfile = /etc/postfix/server.pem</span><br><span class="line">smtp_generic_maps = <span class="built_in">hash</span>:/etc/postfix/generic</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="安装EPEL"><a href="#安装EPEL" class="headerlink" title="安装EPEL"></a>安装EPEL</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ yum install -y epel-release</span><br><span class="line">$ yum install -y centos-release-scl</span><br></pre></td></tr></table></figure>
-<h4 id="安装-remi-safe-库"><a href="#安装-remi-safe-库" class="headerlink" title="安装 remi-safe 库"></a>安装 remi-safe 库</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yum install -y https://rpms.remirepo.net/enterprise/remi-release-7.rpm</span><br></pre></td></tr></table></figure>
-<h4 id="安装-Tuleap-库"><a href="#安装-Tuleap-库" class="headerlink" title="安装 Tuleap 库"></a>安装 Tuleap 库</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ vim /etc/yum.repos.d/Tuleap.repo</span><br><span class="line"></span><br><span class="line">[Tuleap]</span><br><span class="line">name=Tuleap</span><br><span class="line">baseurl=https://ci.tuleap.net/yum/tuleap/rhel/7/dev/<span class="variable">$basearch</span></span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=https://ci.tuleap.net/yum/tuleap/gpg.key</span><br></pre></td></tr></table></figure>
-<h4 id="安装-Tuleap"><a href="#安装-Tuleap" class="headerlink" title="安装 Tuleap"></a>安装 Tuleap</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ yum install -y \</span><br><span class="line">  rh-mysql57-mysql-server \</span><br><span class="line">  tuleap-plugin-agiledashboard \</span><br><span class="line">  tuleap-plugin-graphontrackers \</span><br><span class="line">  tuleap-theme-burningparrot \</span><br><span class="line">  tuleap-theme-flamingparrot \</span><br><span class="line">  tuleap-plugin-git \</span><br><span class="line">  tuleap-plugin-pullrequest</span><br></pre></td></tr></table></figure>
-<p>更多插件安装详见官方<a href="https://docs.tuleap.org/installation-guide/install-plugins.html#install-plugins" target="_blank" rel="noopener">插件列表</a></p>
-<h4 id="配置数据库"><a href="#配置数据库" class="headerlink" title="配置数据库"></a>配置数据库</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ vim /etc/opt/rh/rh-mysql57/my.cnf.d/rh-mysql57-mysql-server.cnf</span><br><span class="line"></span><br><span class="line"><span class="comment">#在[mysqld]下添加</span></span><br><span class="line">sql-mode=NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION</span><br></pre></td></tr></table></figure>
-<p>设置mysql开机自启</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ systemctl <span class="built_in">enable</span> rh-mysql57-mysqld</span><br></pre></td></tr></table></figure>
-<p>启动mysql</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ systemctl start rh-mysql57-mysqld</span><br></pre></td></tr></table></figure>
-<p>设置mysql密码</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ scl <span class="built_in">enable</span> rh-mysql57 <span class="string">"mysqladmin -u root password"</span></span><br></pre></td></tr></table></figure>
-<h3 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h3><blockquote>
-<p><strong>请勿重复执行该命令</strong></p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/usr/share/tuleap/tools/setup.el7.sh \</span><br><span class="line">  --configure \</span><br><span class="line">  --server-name=tuleap.example.com \</span><br><span class="line">  --mysql-server=localhost \</span><br><span class="line">  --mysql-password=XXXXX</span><br></pre></td></tr></table></figure>
-<ul>
-<li>server-name : 本地测试时设为localhost</li>
-<li>确保防火墙开放所需端口<ul>
-<li>Web (TCP/80 &amp; TCP/443)</li>
-<li>SSH (git, admin): TCP/22</li>
-</ul>
-</li>
-</ul>
-<h3 id="首次登陆"><a href="#首次登陆" class="headerlink" title="首次登陆"></a>首次登陆</h3><p>登陆Tuleap  (例如: tuleap.example.com)</p>
-<p>默认的管理员密码在  <code>/root/.tuleap_passwd</code> 中可以找到</p>
+<h3 id="配置QQ邮箱SMTP账户"><a href="#配置QQ邮箱SMTP账户" class="headerlink" title="配置QQ邮箱SMTP账户"></a>配置QQ邮箱SMTP账户</h3><p>创建账户配置文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir /etc/postfix/sasl</span><br><span class="line">$ vim /etc/postfix/sasl/sasl_passwd</span><br><span class="line"></span><br><span class="line">[smtp.qq.com]:587    xxxxxxxx@qq.com:password</span><br></pre></td></tr></table></figure>
+<p>创建hash加密文件sasl_passwd.db</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ postmap /etc/postfix/sasl/sasl_passwd</span><br></pre></td></tr></table></figure>
+<h3 id="创建CA证书"><a href="#创建CA证书" class="headerlink" title="创建CA证书"></a>创建CA证书</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> /etc/ssl/certs/</span><br><span class="line">$ vim Makefile</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改证书有效期 DAYS 为合适的时间</span></span><br><span class="line">DAYS=xxx</span><br><span class="line"></span><br><span class="line">$ make server.pem</span><br><span class="line">$ mv server.pem /etc/postfix</span><br></pre></td></tr></table></figure>
+<h3 id="添加账号映射"><a href="#添加账号映射" class="headerlink" title="添加账号映射"></a>添加账号映射</h3><p>Tuleap的邮件发信人为<a href="mailto:noreply@tuleap.example.com" target="_blank" rel="noopener">noreply@tuleap.example.com</a></p>
+<p>QQ邮箱SMTP的发件人为sasl_passwd中设置的账号</p>
+<p>账号不同时，QQ邮箱会返回报错<code>mail from address must be same as authorization user</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ vim /etc/postfix/generic</span><br><span class="line"></span><br><span class="line"><span class="comment">#在文件最后添加</span></span><br><span class="line">noreply@tuleap.example.com xxxxx@qq.com</span><br></pre></td></tr></table></figure>
+<h3 id="测试postfix"><a href="#测试postfix" class="headerlink" title="测试postfix"></a>测试postfix</h3><p>重启postfix</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ service postfix restart</span><br></pre></td></tr></table></figure>
+<p>登陆tuleap，测试邮件发送功能，如果收不到邮件，查看maillog发送日志排查错误</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cat /var/<span class="built_in">log</span>/maillog</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -516,9 +486,9 @@
           
             <a href="/tags/tuleap/" rel="tag"># tuleap</a>
           
-            <a href="/tags/php/" rel="tag"># php</a>
+            <a href="/tags/postfix/" rel="tag"># postfix</a>
           
-            <a href="/tags/agile-management/" rel="tag"># agile management</a>
+            <a href="/tags/mail/" rel="tag"># mail</a>
           
         </div>
       
@@ -531,15 +501,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/11/21/tuleap-install/" rel="next" title="Tuleap的安装">
+                <i class="fa fa-chevron-left"></i> Tuleap的安装
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/22/tuleap-postfix-config/" rel="prev" title="Tuleap的postfix邮件设置">
-                Tuleap的postfix邮件设置 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -709,7 +679,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#系统"><span class="nav-number">1.</span> <span class="nav-text">系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关闭SElinux"><span class="nav-number">2.</span> <span class="nav-text">关闭SElinux</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">3.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装EPEL"><span class="nav-number">3.1.</span> <span class="nav-text">安装EPEL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装-remi-safe-库"><span class="nav-number">3.2.</span> <span class="nav-text">安装 remi-safe 库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装-Tuleap-库"><span class="nav-number">3.3.</span> <span class="nav-text">安装 Tuleap 库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装-Tuleap"><span class="nav-number">3.4.</span> <span class="nav-text">安装 Tuleap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置数据库"><span class="nav-number">3.5.</span> <span class="nav-text">配置数据库</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动"><span class="nav-number">4.</span> <span class="nav-text">启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#首次登陆"><span class="nav-number">5.</span> <span class="nav-text">首次登陆</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置main-cf"><span class="nav-number">1.</span> <span class="nav-text">配置main.cf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置QQ邮箱SMTP账户"><span class="nav-number">2.</span> <span class="nav-text">配置QQ邮箱SMTP账户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建CA证书"><span class="nav-number">3.</span> <span class="nav-text">创建CA证书</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加账号映射"><span class="nav-number">4.</span> <span class="nav-text">添加账号映射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试postfix"><span class="nav-number">5.</span> <span class="nav-text">测试postfix</span></a></li></ol></div>
             
 
           </div>
@@ -875,9 +845,9 @@
   
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'https://yaoxv.github.io/2018/11/21/tuleap-install/';
-        this.page.identifier = '2018/11/21/tuleap-install/';
-        this.page.title = 'Tuleap的安装';
+        this.page.url = 'https://yaoxv.github.io/2018/11/22/tuleap-postfix-config/';
+        this.page.identifier = '2018/11/22/tuleap-postfix-config/';
+        this.page.title = 'Tuleap的postfix邮件设置';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');
