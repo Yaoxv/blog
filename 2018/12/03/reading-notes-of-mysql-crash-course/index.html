@@ -117,7 +117,7 @@
 <meta property="og:description" content="计算次序 AND的计算次序高于OR的计算次序   vend_id = 1003  与 prod_price &amp;gt;= 10 先计算，之后再和 vend_id = 1002 进行计算，所以结果为 id = 1002的商品和 id = 1003 且 price &amp;gt;= 10 的商品。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://blog-1251789414.cos.ap-shanghai.myqcloud.com/reading-notes-of-mysql-crash-course-1.png">
-<meta property="og:updated_time" content="2018-12-03T02:44:57.110Z">
+<meta property="og:updated_time" content="2018-12-03T12:38:49.246Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《MySQL必知必会》笔记">
 <meta name="twitter:description" content="计算次序 AND的计算次序高于OR的计算次序   vend_id = 1003  与 prod_price &amp;gt;= 10 先计算，之后再和 vend_id = 1002 进行计算，所以结果为 id = 1002的商品和 id = 1003 且 price &amp;gt;= 10 的商品。">
@@ -251,7 +251,7 @@
           
           <li class="menu-item menu-item-categories">
     <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">4</span></a>
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">2</span></a>
   </li>
         
         
@@ -389,7 +389,7 @@
                 
               
 
-              <time title="创建时间：2018-12-03 10:00:15 / 修改时间：10:44:57" itemprop="dateCreated datePublished" datetime="2018-12-03T10:00:15+08:00">2018-12-03</time>
+              <time title="创建时间：2018-12-03 10:00:15 / 修改时间：20:38:49" itemprop="dateCreated datePublished" datetime="2018-12-03T10:00:15+08:00">2018-12-03</time>
             
 
             
@@ -472,6 +472,58 @@
 </blockquote>
 <p><img src="https://blog-1251789414.cos.ap-shanghai.myqcloud.com/reading-notes-of-mysql-crash-course-1.png" alt=""></p>
 <p><code>vend_id = 1003</code>  与 <code>prod_price &gt;= 10</code> 先计算，之后再和 <code>vend_id = 1002</code> 进行计算，所以结果为 id = 1002的商品和 id = 1003 且 price &gt;= 10 的商品。</p>
+<a id="more"></a>
+<h4 id="查询区分大小写"><a href="#查询区分大小写" class="headerlink" title="查询区分大小写"></a>查询区分大小写</h4><h5 id="建表时设置字段区分大小写"><a href="#建表时设置字段区分大小写" class="headerlink" title="建表时设置字段区分大小写"></a>建表时设置字段区分大小写</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE t (</span><br><span class="line"> a VARCHAR(32) BINARY,</span><br><span class="line"> b VARCHAR(32)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p><code>VARCHAR BINARY</code>以字节存储，大小写敏感</p>
+<p><code>VARCHAR</code>以字符存储，大小写不敏感</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE t (</span><br><span class="line">  a varchar(32) COLLATE utf8_bin DEFAULT NULL,</span><br><span class="line">  b varchar(32) DEFAULT NULL</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p><code>utf8_bin</code> 将字符串以字节存储，大小写敏感</p>
+<p><code>utf8_genera_ci</code> 大小写不敏感 , ci = case insensitive</p>
+<p><code>utf8_genera_cs</code> 大小写敏感 , cs = case sensitive</p>
+<h5 id="查询时指定大小写敏感"><a href="#查询时指定大小写敏感" class="headerlink" title="查询时指定大小写敏感"></a>查询时指定大小写敏感</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from t where a = binary &quot;xxx&quot;;</span><br></pre></td></tr></table></figure>
+<h4 id="别名"><a href="#别名" class="headerlink" title="别名"></a>别名</h4><h5 id="列别名"><a href="#列别名" class="headerlink" title="列别名"></a>列别名</h5><p>在MySQL中，可以使用<code>ORDER BY</code>，<code>GROUP BY</code>和<code>HAVING</code>子句中的列别名来引用该列</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#将姓和名拼接为全名，并以全名排序</span><br><span class="line">select concat(first_name,&apos; &apos;,last_name) as full_name </span><br><span class="line">from tb_user </span><br><span class="line">order by full_name;</span><br><span class="line"></span><br><span class="line">#单价*天数 = 总价，总价大于100</span><br><span class="line">select order_id,price*day as total </span><br><span class="line">from tb_order </span><br><span class="line">having total &gt; 100;</span><br><span class="line"></span><br><span class="line">#选择消费总额大于100的用户</span><br><span class="line">select username,sum(price*day) total </span><br><span class="line">from tb_order </span><br><span class="line">group by username </span><br><span class="line">having total &gt; 100;</span><br></pre></td></tr></table></figure>
+<h5 id="表别名"><a href="#表别名" class="headerlink" title="表别名"></a>表别名</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select username,price </span><br><span class="line">from tb_user as u,tb_order as u </span><br><span class="line">where u.id = o.u_id</span><br></pre></td></tr></table></figure>
+<p>表别名只在查询过程中使用，不返回给客户端</p>
+<h4 id="WHERE和HAVING的差别"><a href="#WHERE和HAVING的差别" class="headerlink" title="WHERE和HAVING的差别"></a>WHERE和HAVING的差别</h4><blockquote>
+<p>WHERE在数据 分组前进行过滤，HAVING在数据分组后进行过滤。这是一个重要的区别，WHERE排除的行不包括在分组中。这可能会改变计算值，从而影响HAVING子句中基于这些值过滤掉的分组</p>
+</blockquote>
+<h4 id="左联结和右联结"><a href="#左联结和右联结" class="headerlink" title="左联结和右联结"></a>左联结和右联结</h4><p><code>LEFT OUTER JOIN</code> 表示从左边的表中选择所有行</p>
+<p><code>RIGHT OUTER JOIN</code> 表示从右边的表中选择所有行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 检索所有用户的用户名和订单信息，包含没有下订单的用户</span><br><span class="line">select tb_user.username,tb_order.*</span><br><span class="line">from tb_user left outer join tb_order</span><br><span class="line">on tb_user.id = tb_order.u_id;</span><br></pre></td></tr></table></figure>
+<h4 id="INSERT性能"><a href="#INSERT性能" class="headerlink" title="INSERT性能"></a>INSERT性能</h4><p>单条INSERT语句处理多个插入比多条INSERT语句块</p>
+<h4 id="TRUNCATE"><a href="#TRUNCATE" class="headerlink" title="TRUNCATE"></a>TRUNCATE</h4><p>删除表并重新创建</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TRUNCATE TABLE table_name</span><br></pre></td></tr></table></figure>
+<h4 id="重置自增id"><a href="#重置自增id" class="headerlink" title="重置自增id"></a>重置自增id</h4><ol>
+<li><p>使用truncate：truncate table； </p>
+</li>
+<li><p>使用修改标识：dbcc checkident (‘table_name’ , reseed, new_reseed_value) ;<br>说明：new_reseed_value是设置的当前标识，下次插入则从new_reseed_value+1开始。如果new_reseed_value小于表中当前标识的值，有可能会产生重复key，会产生 2627 号错误信息。<br>用处：此方法不会清空已有数据。适用于大量删除后修改新的标识，但不能比当前表中最大值小。</p>
+</li>
+<li><p>使用修改表的方法：alter table tablename auto_increment=new </p>
+<p>说明：此方法和上面的二方法类似。也不会清空数据，有可能会出现重复key的可能，所以此方法也只适用于清空表之后重置自增id或者大量删除后修改自增id。</p>
+</li>
+</ol>
+<h4 id="引擎类型"><a href="#引擎类型" class="headerlink" title="引擎类型"></a>引擎类型</h4><ul>
+<li>MyISAM<ul>
+<li>性能极高</li>
+<li>支持全文搜索</li>
+<li>不支持事务处理</li>
+</ul>
+</li>
+<li>MEMORY<ul>
+<li>功能与MyISAM相同</li>
+<li>数据存储在内存，速度快，适合临时表</li>
+</ul>
+</li>
+<li>InnoDB<ul>
+<li>可靠的事务处理</li>
+<li>不支持全文搜索</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><li class="fa fa-exclamation-triangle"></li>  外键不能跨引擎</p>
+</blockquote>
 
       
     </div>
@@ -614,10 +666,6 @@
                     
                       
                     
-                      
-                    
-                      
-                    
                     <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
@@ -695,7 +743,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#计算次序"><span class="nav-number">1.</span> <span class="nav-text">计算次序</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#计算次序"><span class="nav-number">1.</span> <span class="nav-text">计算次序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查询区分大小写"><span class="nav-number">2.</span> <span class="nav-text">查询区分大小写</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#建表时设置字段区分大小写"><span class="nav-number">2.1.</span> <span class="nav-text">建表时设置字段区分大小写</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查询时指定大小写敏感"><span class="nav-number">2.2.</span> <span class="nav-text">查询时指定大小写敏感</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#别名"><span class="nav-number">3.</span> <span class="nav-text">别名</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#列别名"><span class="nav-number">3.1.</span> <span class="nav-text">列别名</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#表别名"><span class="nav-number">3.2.</span> <span class="nav-text">表别名</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#WHERE和HAVING的差别"><span class="nav-number">4.</span> <span class="nav-text">WHERE和HAVING的差别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#左联结和右联结"><span class="nav-number">5.</span> <span class="nav-text">左联结和右联结</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#INSERT性能"><span class="nav-number">6.</span> <span class="nav-text">INSERT性能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TRUNCATE"><span class="nav-number">7.</span> <span class="nav-text">TRUNCATE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重置自增id"><span class="nav-number">8.</span> <span class="nav-text">重置自增id</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#引擎类型"><span class="nav-number">9.</span> <span class="nav-text">引擎类型</span></a></li></ol></div>
             
 
           </div>
