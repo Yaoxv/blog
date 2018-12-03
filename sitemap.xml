@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://yaoxv.github.io/booklist/index.html</loc>
+    
+    <lastmod>2018-12-03T02:47:59.407Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://yaoxv.github.io/2018/12/03/reading-notes-of-mysql-crash-course/</loc>
+    
+    <lastmod>2018-12-03T02:44:57.110Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://yaoxv.github.io/2018/11/22/tuleap-postfix-config/</loc>
     
     <lastmod>2018-11-22T02:52:28.416Z</lastmod>
