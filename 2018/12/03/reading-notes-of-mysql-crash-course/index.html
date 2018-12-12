@@ -109,7 +109,7 @@
 
 
   <meta name="description" content="计算次序 AND的计算次序高于OR的计算次序   vend_id = 1003  与 prod_price &amp;gt;= 10 先计算，之后再和 vend_id = 1002 进行计算，所以结果为 id = 1002的商品和 id = 1003 且 price &amp;gt;= 10 的商品。">
-<meta name="keywords" content="reading notes,mysql">
+<meta name="keywords" content="mysql,reading notes">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《MySQL必知必会》笔记">
 <meta property="og:url" content="https://yaoxv.github.io/2018/12/03/reading-notes-of-mysql-crash-course/index.html">
@@ -243,7 +243,7 @@
           
           <li class="menu-item menu-item-tags">
     <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">8</span></a>
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">9</span></a>
   </li>
         
         
@@ -251,7 +251,7 @@
           
           <li class="menu-item menu-item-categories">
     <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">3</span></a>
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">4</span></a>
   </li>
         
         
@@ -259,7 +259,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">4</span></a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">5</span></a>
   </li>
         
         
@@ -439,8 +439,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2018/12/03/reading-notes-of-mysql-crash-course/#comments" itemprop="discussionUrl">
-                
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/03/reading-notes-of-mysql-crash-course/" itemprop="commentCount"></span>
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/2018/12/03/reading-notes-of-mysql-crash-course/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -571,9 +570,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/reading-notes/" rel="tag"># reading notes</a>
-          
             <a href="/tags/mysql/" rel="tag"># mysql</a>
+          
+            <a href="/tags/reading-notes/" rel="tag"># reading notes</a>
           
         </div>
       
@@ -622,12 +621,9 @@
 
   
     <div class="comments" id="comments">
-      <div id="disqus_thread">
-        <noscript>
-          Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
-      </div>
+      
+        <div id="gitment-container"></div>
+      
     </div>
 
   
@@ -680,7 +676,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -699,7 +695,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">3</span>
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -728,7 +726,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">8</span>
+                      
+                    
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -937,34 +937,50 @@
 
   
 
-  
-    <script id="dsq-count-scr" src="https://yaoxv.disqus.com/count.js" async></script>
-  
+
 
   
-    <script type="text/javascript">
-      var disqus_config = function () {
-        this.page.url = 'https://yaoxv.github.io/2018/12/03/reading-notes-of-mysql-crash-course/';
-        this.page.identifier = '2018/12/03/reading-notes-of-mysql-crash-course/';
-        this.page.title = '《MySQL必知必会》笔记';
-        };
-      function loadComments () {
-        var d = document, s = d.createElement('script');
-        s.src = 'https://yaoxv.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', '' + +new Date());
-        (d.head || d.body).appendChild(s);
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname,
+            owner: 'Yaoxv',
+            repo: 'yaoxv.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '015374e28982b470f09b2a913baa779cc5996e68',
+            
+                client_id: '4154f978ea591b93ef7e'
+            }});
+        gitment.render('gitment-container');
       }
+
       
-        loadComments();
+      renderGitment();
       
-    </script>
-  
-
-
-
-
-
-
+      </script>
+    
 
 
 
