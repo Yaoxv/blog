@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://yaoxv.github.io/2018/12/10/talking-about-design-pattern/</loc>
+    
+    <lastmod>2019-01-04T08:30:58.852Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://yaoxv.github.io/2018/12/03/mysql-crash-course/</loc>
+    
+    <lastmod>2018-12-12T09:24:55.785Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://yaoxv.github.io/booklist/index.html</loc>
     
     <lastmod>2018-12-12T06:38:45.481Z</lastmod>
@@ -9,23 +23,9 @@
   </url>
   
   <url>
-    <loc>https://yaoxv.github.io/2018/12/10/talking-about-design-pattern/</loc>
-    
-    <lastmod>2018-12-11T08:32:52.731Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://yaoxv.github.io/2018/12/04/docker-practice/</loc>
     
     <lastmod>2018-12-11T08:07:33.962Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://yaoxv.github.io/2018/12/03/mysql-crash-course/</loc>
-    
-    <lastmod>2018-12-04T08:53:39.750Z</lastmod>
     
   </url>
   
