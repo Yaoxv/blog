@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[ManageIQ Provider开发（二）：创建新的Provider]]></title>
+    <url>%2F2019%2F01%2F07%2Fmanageiq-provider-generator%2F</url>
+    <content type="text"><![CDATA[创建Provider123cd manageiqbundle exec rails generate provider foo_cloud --dummy 修改配置文件Provider生成器会在manageiq/Gemfile文件中添加foo_cloud,但还需要进一步修改 123456# generator自动生成group :vmware, :manageiq_default do manageiq_plugin "manageiq-providers-vmware"manageiq_plugin "manageiq-providers-foo_cloud" # TODO: Sort alphabetically... gem "vmware_web_service", "~&gt;0.3.0"end 123456789# 修改后的Gemfilegroup :foo_cloud, :manageiq_default do gem 'manageiq-providers-foo_cloud', :path =&gt; 'plugins/manageiq-providers-foo_cloud'endgroup :vmware, :manageiq_default do manageiq_plugin "manageiq-providers-vmware" gem "vmware_web_service", "~&gt;0.3.0"end 修改lib/workers/miq_worker_types.rb文件 在MIQ_WORKER_TYPES中添加 1234"ManageIQ::Providers::FooCloud::CloudManager::EventCatcher" =&gt; %i(manageiq_default),"ManageIQ::Providers::FooCloud::CloudManager::MetricsCollectorWorker" =&gt; %i(manageiq_default),"ManageIQ::Providers::FooCloud::CloudManager::RefreshWorker" =&gt; %i(manageiq_default),"ManageIQ::Providers::FooCloud::NetworkManager::RefreshWorker" =&gt; %i(manageiq_default), 在MIQ_WORKER_TYPES_IN_KILL_ORDER中添加 1234ManageIQ::Providers::FooCloud::CloudManager::MetricsCollectorWorkerManageIQ::Providers::FooCloud::CloudManager::RefreshWorkerManageIQ::Providers::FooCloud::NetworkManager::RefreshWorkerManageIQ::Providers::FooCloud::CloudManager::EventCatcher 安装新的Provider12cd manageiqbundle install 参考文档ManageIQ Provider生成器]]></content>
+      <categories>
+        <category>ManageIQ</category>
+      </categories>
+      <tags>
+        <tag>manageiq</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[ManageIQ Provider开发（一）：ManageIQ的安装]]></title>
     <url>%2F2019%2F01%2F04%2Fmanageiq-install%2F</url>
     <content type="text"><![CDATA[系统环境Ubuntu 16.04 64位 依赖包安装及配置12345678910111213141516171819202122232425262728# Git and componentssudo apt install git# Memcached for the session storesudo apt install memcached # PostgreSQL Database server and to build 'pg' Gemsudo apt install postgresql libpq-dev# For Nokogiri Gemsudo apt install libxml2-dev libxslt-dev patch # For sqlite3 Gemsudo apt install libsqlite-dev libsqlite3-dev # For unf Gemsudo apt install g++ # For Curbsudo apt install libcurl4-gnutls-dev # For rugged Gemsudo apt install cmakesudo apt install libgit2-dev pkg-config libtool# For puma &lt; 3.7.0sudo apt install libssl-dev 123456789101112131415161718192021222324252627282930313233# Install Node.js(version &gt;= 8.9.0)wget https://nodejs.org/dist/v10.15.0/node-v10.15.0.tar.gztar -xzvf node-v10.15.0.tar.gzcd ./node-v10.15.0./configuresudo make &amp;&amp; make install# Enable Memcachedsudo systemctl enable memcachedsudo systemctl start memcached# Configure PostgreSQLsudo grep -q '^local\s' /etc/postgresql/9.5/main/pg_hba.conf || echo "local all all trust" | sudo tee -a /etc/postgresql/9.5/main/pg_hba.confsudo sed -i.bak 's/\(^local\s*\w*\s*\w*\s*\)\(peer$\)/\1trust/' /etc/postgresql/9.5/main/pg_hba.confsudo systemctl restart postgresqlsudo su postgres -c "psql -c \"CREATE ROLE root SUPERUSER LOGIN PASSWORD 'smartvm'\""# Install Ruby(version &gt;= 2.3.1)wget https://cache.ruby-lang.org/pub/ruby/2.4/ruby-2.4.5.tar.gztar -xzvf ruby-2.4.5.tar.gzcd ./ruby-2.4.5./configuresudo make &amp;&amp; make install# Install the Bower package managersudo npm install -g bower# Install the Yarn package managersudo npm install -g yarn# Install the Gulp and Webpack build systemsudo npm install -g gulp-clisudo npm install -g webpack ManageIQ安装当前版本 Gaprindashvili-7 ManageIQ在Github上master分支不是稳定版本 123456# Clone the Codegit clone -b gaprindashvili-7 https://github.com/ManageIQ/manageiq.git# Install ManageIQcd ./manageiqbin/setup ManageIQ的依赖安装，配置，数据库初始化都将执行，所以安装过程较长。国内网络原因可能会造成安装失败，建议挂梯子执行安装，或修改npm、yarn的源。 启动ManageIQ1bundle exec rake evm:start 参考文档ManageIQ安装官方文档]]></content>
@@ -31,8 +42,8 @@
         <category>Docker</category>
       </categories>
       <tags>
-        <tag>docker</tag>
         <tag>reading notes</tag>
+        <tag>docker</tag>
       </tags>
   </entry>
   <entry>
@@ -43,8 +54,8 @@
         <category>MySQL</category>
       </categories>
       <tags>
-        <tag>reading notes</tag>
         <tag>mysql</tag>
+        <tag>reading notes</tag>
       </tags>
   </entry>
   <entry>
