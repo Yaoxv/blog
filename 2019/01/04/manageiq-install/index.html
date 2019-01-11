@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="Blog">
 <meta property="og:description" content="系统环境Ubuntu 16.04 64位 依赖包安装及配置12345678910111213141516171819202122232425262728# Git and componentssudo apt install git# Memcached for the session storesudo apt install memcached       # PostgreSQL Datab">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-04T10:35:30.220Z">
+<meta property="og:updated_time" content="2019-01-11T06:41:14.471Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ManageIQ Provider开发（一）：ManageIQ的安装">
 <meta name="twitter:description" content="系统环境Ubuntu 16.04 64位 依赖包安装及配置12345678910111213141516171819202122232425262728# Git and componentssudo apt install git# Memcached for the session storesudo apt install memcached       # PostgreSQL Datab">
@@ -241,7 +241,7 @@
           
           <li class="menu-item menu-item-tags">
     <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">10</span></a>
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">12</span></a>
   </li>
         
         
@@ -249,7 +249,7 @@
           
           <li class="menu-item menu-item-categories">
     <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">5</span></a>
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">6</span></a>
   </li>
         
         
@@ -257,7 +257,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">7</span></a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">9</span></a>
   </li>
         
         
@@ -349,7 +349,7 @@
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yaoxv">
-      <meta itemprop="description" content="菜就认，菜就练">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/pokemon.jpg">
     </span>
 
@@ -387,12 +387,24 @@
                 
               
 
-              <time title="创建时间：2019-01-04 17:42:54 / 修改时间：18:35:30" itemprop="dateCreated datePublished" datetime="2019-01-04T17:42:54+08:00">2019-01-04</time>
+              <time title="创建时间：2019-01-04 17:42:54" itemprop="dateCreated datePublished" datetime="2019-01-04T17:42:54+08:00">2019-01-04</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-01-11 14:41:14" itemprop="dateModified" datetime="2019-01-11T14:41:14+08:00">2019-01-11</time>
               
             
           </span>
@@ -465,6 +477,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Clone the Code</span></span><br><span class="line">git <span class="built_in">clone</span> -b gaprindashvili-7 https://github.com/ManageIQ/manageiq.git</span><br><span class="line"></span><br><span class="line"><span class="comment"># Install ManageIQ</span></span><br><span class="line"><span class="built_in">cd</span> ./manageiq</span><br><span class="line">bin/setup</span><br></pre></td></tr></table></figure>
 <p>ManageIQ的依赖安装，配置，数据库初始化都将执行，所以安装过程较长。国内网络原因可能会造成安装失败，建议挂梯子执行安装，或修改npm、yarn的源。</p>
 <h4 id="启动ManageIQ"><a href="#启动ManageIQ" class="headerlink" title="启动ManageIQ"></a>启动ManageIQ</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bundle <span class="built_in">exec</span> rake evm:start</span><br></pre></td></tr></table></figure>
+<p>访问<code>localhost:3000</code></p>
 <h4 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h4><p><a href="http://manageiq.org/docs/guides/developer_setup.html" target="_blank" rel="noopener">ManageIQ安装官方文档</a> </p>
 
       
@@ -580,7 +593,7 @@
               <img class="site-author-image" itemprop="image" src="/images/pokemon.jpg" alt="Yaoxv">
             
               <p class="site-author-name" itemprop="name">Yaoxv</p>
-              <p class="site-description motion-element" itemprop="description">菜就认，菜就练</p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           
@@ -590,7 +603,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -613,7 +626,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">5</span>
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -646,7 +661,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">10</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

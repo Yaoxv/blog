@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[ManageIQ Provider开发（三）：使用自定义前端页面]]></title>
+    <url>%2F2019%2F01%2F11%2Fmanageiq-local-ui%2F</url>
+    <content type="text"><![CDATA[在ManageIQ安装过程中，会从github上拉取manageiq-ui-classic库。现在我们开发新的Provider就需要修改manageiq-ui-classic库，使其支持新的Provider。 克隆源码12cd manangeiq/pluginsgit clone -b gaprindashvili-7 https://github.com/ManageIQ/manageiq-ui-classic.git 修改配置文件1234cd manageiq/bundler.dvim local_plugins.rboverride_gem 'manageiq-ui-classic', :path =&gt; File.expand_path('../plugins/manageiq-ui-classic', __dir__) 安装本地ui12cd manageiqbundle install]]></content>
+      <categories>
+        <category>ManageIQ</category>
+      </categories>
+      <tags>
+        <tag>manageiq</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[《Spring实战》笔记]]></title>
+    <url>%2F2019%2F01%2F09%2Fspring-in-action%2F</url>
+    <content type="text"><![CDATA[面向切面编程 AOP(aspect-oriented programming)AOP术语 通知(Advice) 切面的工作，称为通知 前置通知 (Before) 后置通知 (After) 返回通知 (After-returning) 异常通知 (After-throwing) 环绕通知 (Around) : 在被通知的方法调用前后执行自定义行为 连接点 (Join Point) 连接点可以是调用方法时、抛出异常时、甚至是修改字段时 切点 (Pointcut) 切点可以利用正则匹配类和方法名来指定 切面 (Aspect) 通知和切点共同定义了切面——它是什么，在何时、何处完成其功能 引入 (Introduction) 引入允许我们向现有的类添加新方法或属性 织入 (Weaving) 把切面应用到目标对象并创建新的代理对象的过程 编译期 AspectJ 类加载期 AspectJ 5 的加载时织入(load-time weaving, LTW) 运行期 Spring AOP 切点表达式12345package concert； public interface Performance&#123; public void perform(); &#125; @Pointcut对于频繁使用的切点表达式，可以使用@Pointcut注解定义可重用的切点 123456789101112131415@Aspectpublic class Foo&#123; @Pointcut("execution(** concert.Perfromance.perform(..))") public void performance() &#123;&#125; @Before("performance()") public void foo1()&#123; ... &#125; @AfterReturning("performance()") public void foo2()&#123; ... &#125;&#125; 环绕通知123456789@Around("performance()")public void foo(ProceedingJoinPoint jp) &#123; try&#123; System.out.println("Before"); jp.proceed(); System.out.println("After"); &#125; catch (Throwable e) System.out.println("Exception");&#125;]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>reading notes</tag>
+        <tag>java</tag>
+        <tag>spring</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[ManageIQ Provider开发（二）：创建新的Provider]]></title>
     <url>%2F2019%2F01%2F07%2Fmanageiq-provider-generator%2F</url>
     <content type="text"><![CDATA[创建Provider123cd manageiqbundle exec rails generate provider foo_cloud --dummy 修改配置文件Provider生成器会在manageiq/Gemfile文件中添加foo_cloud,但还需要进一步修改 123456# generator自动生成group :vmware, :manageiq_default do manageiq_plugin "manageiq-providers-vmware"manageiq_plugin "manageiq-providers-foo_cloud" # TODO: Sort alphabetically... gem "vmware_web_service", "~&gt;0.3.0"end 123456789# 修改后的Gemfilegroup :foo_cloud, :manageiq_default do gem 'manageiq-providers-foo_cloud', :path =&gt; 'plugins/manageiq-providers-foo_cloud'endgroup :vmware, :manageiq_default do manageiq_plugin "manageiq-providers-vmware" gem "vmware_web_service", "~&gt;0.3.0"end 修改lib/workers/miq_worker_types.rb文件 在MIQ_WORKER_TYPES中添加 1234"ManageIQ::Providers::FooCloud::CloudManager::EventCatcher" =&gt; %i(manageiq_default),"ManageIQ::Providers::FooCloud::CloudManager::MetricsCollectorWorker" =&gt; %i(manageiq_default),"ManageIQ::Providers::FooCloud::CloudManager::RefreshWorker" =&gt; %i(manageiq_default),"ManageIQ::Providers::FooCloud::NetworkManager::RefreshWorker" =&gt; %i(manageiq_default), 在MIQ_WORKER_TYPES_IN_KILL_ORDER中添加 1234ManageIQ::Providers::FooCloud::CloudManager::MetricsCollectorWorkerManageIQ::Providers::FooCloud::CloudManager::RefreshWorkerManageIQ::Providers::FooCloud::NetworkManager::RefreshWorkerManageIQ::Providers::FooCloud::CloudManager::EventCatcher 安装新的Provider12cd manageiqbundle install 参考文档ManageIQ Provider生成器]]></content>
@@ -14,7 +38,7 @@
   <entry>
     <title><![CDATA[ManageIQ Provider开发（一）：ManageIQ的安装]]></title>
     <url>%2F2019%2F01%2F04%2Fmanageiq-install%2F</url>
-    <content type="text"><![CDATA[系统环境Ubuntu 16.04 64位 依赖包安装及配置12345678910111213141516171819202122232425262728# Git and componentssudo apt install git# Memcached for the session storesudo apt install memcached # PostgreSQL Database server and to build 'pg' Gemsudo apt install postgresql libpq-dev# For Nokogiri Gemsudo apt install libxml2-dev libxslt-dev patch # For sqlite3 Gemsudo apt install libsqlite-dev libsqlite3-dev # For unf Gemsudo apt install g++ # For Curbsudo apt install libcurl4-gnutls-dev # For rugged Gemsudo apt install cmakesudo apt install libgit2-dev pkg-config libtool# For puma &lt; 3.7.0sudo apt install libssl-dev 123456789101112131415161718192021222324252627282930313233# Install Node.js(version &gt;= 8.9.0)wget https://nodejs.org/dist/v10.15.0/node-v10.15.0.tar.gztar -xzvf node-v10.15.0.tar.gzcd ./node-v10.15.0./configuresudo make &amp;&amp; make install# Enable Memcachedsudo systemctl enable memcachedsudo systemctl start memcached# Configure PostgreSQLsudo grep -q '^local\s' /etc/postgresql/9.5/main/pg_hba.conf || echo "local all all trust" | sudo tee -a /etc/postgresql/9.5/main/pg_hba.confsudo sed -i.bak 's/\(^local\s*\w*\s*\w*\s*\)\(peer$\)/\1trust/' /etc/postgresql/9.5/main/pg_hba.confsudo systemctl restart postgresqlsudo su postgres -c "psql -c \"CREATE ROLE root SUPERUSER LOGIN PASSWORD 'smartvm'\""# Install Ruby(version &gt;= 2.3.1)wget https://cache.ruby-lang.org/pub/ruby/2.4/ruby-2.4.5.tar.gztar -xzvf ruby-2.4.5.tar.gzcd ./ruby-2.4.5./configuresudo make &amp;&amp; make install# Install the Bower package managersudo npm install -g bower# Install the Yarn package managersudo npm install -g yarn# Install the Gulp and Webpack build systemsudo npm install -g gulp-clisudo npm install -g webpack ManageIQ安装当前版本 Gaprindashvili-7 ManageIQ在Github上master分支不是稳定版本 123456# Clone the Codegit clone -b gaprindashvili-7 https://github.com/ManageIQ/manageiq.git# Install ManageIQcd ./manageiqbin/setup ManageIQ的依赖安装，配置，数据库初始化都将执行，所以安装过程较长。国内网络原因可能会造成安装失败，建议挂梯子执行安装，或修改npm、yarn的源。 启动ManageIQ1bundle exec rake evm:start 参考文档ManageIQ安装官方文档]]></content>
+    <content type="text"><![CDATA[系统环境Ubuntu 16.04 64位 依赖包安装及配置12345678910111213141516171819202122232425262728# Git and componentssudo apt install git# Memcached for the session storesudo apt install memcached # PostgreSQL Database server and to build 'pg' Gemsudo apt install postgresql libpq-dev# For Nokogiri Gemsudo apt install libxml2-dev libxslt-dev patch # For sqlite3 Gemsudo apt install libsqlite-dev libsqlite3-dev # For unf Gemsudo apt install g++ # For Curbsudo apt install libcurl4-gnutls-dev # For rugged Gemsudo apt install cmakesudo apt install libgit2-dev pkg-config libtool# For puma &lt; 3.7.0sudo apt install libssl-dev 123456789101112131415161718192021222324252627282930313233# Install Node.js(version &gt;= 8.9.0)wget https://nodejs.org/dist/v10.15.0/node-v10.15.0.tar.gztar -xzvf node-v10.15.0.tar.gzcd ./node-v10.15.0./configuresudo make &amp;&amp; make install# Enable Memcachedsudo systemctl enable memcachedsudo systemctl start memcached# Configure PostgreSQLsudo grep -q '^local\s' /etc/postgresql/9.5/main/pg_hba.conf || echo "local all all trust" | sudo tee -a /etc/postgresql/9.5/main/pg_hba.confsudo sed -i.bak 's/\(^local\s*\w*\s*\w*\s*\)\(peer$\)/\1trust/' /etc/postgresql/9.5/main/pg_hba.confsudo systemctl restart postgresqlsudo su postgres -c "psql -c \"CREATE ROLE root SUPERUSER LOGIN PASSWORD 'smartvm'\""# Install Ruby(version &gt;= 2.3.1)wget https://cache.ruby-lang.org/pub/ruby/2.4/ruby-2.4.5.tar.gztar -xzvf ruby-2.4.5.tar.gzcd ./ruby-2.4.5./configuresudo make &amp;&amp; make install# Install the Bower package managersudo npm install -g bower# Install the Yarn package managersudo npm install -g yarn# Install the Gulp and Webpack build systemsudo npm install -g gulp-clisudo npm install -g webpack ManageIQ安装当前版本 Gaprindashvili-7 ManageIQ在Github上master分支不是稳定版本 123456# Clone the Codegit clone -b gaprindashvili-7 https://github.com/ManageIQ/manageiq.git# Install ManageIQcd ./manageiqbin/setup ManageIQ的依赖安装，配置，数据库初始化都将执行，所以安装过程较长。国内网络原因可能会造成安装失败，建议挂梯子执行安装，或修改npm、yarn的源。 启动ManageIQ1bundle exec rake evm:start 访问localhost:3000 参考文档ManageIQ安装官方文档]]></content>
       <categories>
         <category>ManageIQ</category>
       </categories>
@@ -42,8 +66,8 @@
         <category>Docker</category>
       </categories>
       <tags>
-        <tag>reading notes</tag>
         <tag>docker</tag>
+        <tag>reading notes</tag>
       </tags>
   </entry>
   <entry>
@@ -54,8 +78,8 @@
         <category>MySQL</category>
       </categories>
       <tags>
-        <tag>mysql</tag>
         <tag>reading notes</tag>
+        <tag>mysql</tag>
       </tags>
   </entry>
   <entry>
