@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[ManageIQ Provider开发（四）：ManageIQ的工程结构]]></title>
+    <url>%2F2019%2F02%2F26%2Fmanageiq-project-layout%2F</url>
+    <content type="text"><![CDATA[本文主要分析ManageIQ的工程结构，明确Provider的作用（将云服务商API获取的数据转变为符合ManageIQ需求的数据）。 ManageIQ的工程结构ManageIQ的工程结构示意图如下 Provider的作用就是为了适配不同的云服务商所提供的数据，将其转变为符合ManageIQ的数据。 Provider为了获取云服务商提供的数据，需要请求其各自的API。为了更好的解耦代码，Provider不直接与API进行交互，而是通过官方提供或开源的SDK进行交互。 这些SDK不仅解耦了代码，还对API数据进行了初步的封装，将json转变为了类，方便了Provider进行调用。 AMAZON-SDK为亚马逊官方提供的，功能比较齐全，代码量比较大，参照其开发自己需要的SDK比较费时费力；FOG-GOOGLE是开源的云服务器API交互SDK，基于FOG二次开发比较简单，快捷。 参考文档ManageIQ-Providers-amazon ManageIQ-Providers-google fog-google amazon-sdk(v2)]]></content>
+      <categories>
+        <category>ManageIQ</category>
+      </categories>
+      <tags>
+        <tag>manageiq</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[ManageIQ Provider开发（三）：使用自定义前端页面]]></title>
     <url>%2F2019%2F01%2F11%2Fmanageiq-local-ui%2F</url>
     <content type="text"><![CDATA[在ManageIQ安装过程中，会从github上拉取manageiq-ui-classic库。现在我们开发新的Provider就需要修改manageiq-ui-classic库，使其支持新的Provider。 克隆源码12cd manangeiq/pluginsgit clone -b gaprindashvili-7 https://github.com/ManageIQ/manageiq-ui-classic.git 修改配置文件1234cd manageiq/bundler.dvim local_plugins.rboverride_gem 'manageiq-ui-classic', :path =&gt; File.expand_path('../plugins/manageiq-ui-classic', __dir__) 安装本地ui12cd manageiqbundle install]]></content>
@@ -14,14 +25,14 @@
   <entry>
     <title><![CDATA[《Spring实战》笔记]]></title>
     <url>%2F2019%2F01%2F09%2Fspring-in-action%2F</url>
-    <content type="text"><![CDATA[面向切面编程 AOP(aspect-oriented programming)AOP术语 通知(Advice) 切面的工作，称为通知 前置通知 (Before) 后置通知 (After) 返回通知 (After-returning) 异常通知 (After-throwing) 环绕通知 (Around) : 在被通知的方法调用前后执行自定义行为 连接点 (Join Point) 连接点可以是调用方法时、抛出异常时、甚至是修改字段时 切点 (Pointcut) 切点可以利用正则匹配类和方法名来指定 切面 (Aspect) 通知和切点共同定义了切面——它是什么，在何时、何处完成其功能 引入 (Introduction) 引入允许我们向现有的类添加新方法或属性 织入 (Weaving) 把切面应用到目标对象并创建新的代理对象的过程 编译期 AspectJ 类加载期 AspectJ 5 的加载时织入(load-time weaving, LTW) 运行期 Spring AOP 切点表达式12345package concert； public interface Performance&#123; public void perform(); &#125; @Pointcut对于频繁使用的切点表达式，可以使用@Pointcut注解定义可重用的切点 123456789101112131415@Aspectpublic class Foo&#123; @Pointcut("execution(** concert.Perfromance.perform(..))") public void performance() &#123;&#125; @Before("performance()") public void foo1()&#123; ... &#125; @AfterReturning("performance()") public void foo2()&#123; ... &#125;&#125; 环绕通知123456789@Around("performance()")public void foo(ProceedingJoinPoint jp) &#123; try&#123; System.out.println("Before"); jp.proceed(); System.out.println("After"); &#125; catch (Throwable e) System.out.println("Exception");&#125;]]></content>
+    <content type="text"><![CDATA[面向切面编程 AOP(aspect-oriented programming)AOP术语 通知(Advice) 切面的工作，称为通知 前置通知 (Before) 后置通知 (After) 返回通知 (After-returning) 异常通知 (After-throwing) 环绕通知 (Around) : 在被通知的方法调用前后执行自定义行为 连接点 (Join Point) 连接点可以是调用方法时、抛出异常时、甚至是修改字段时 切点 (Pointcut) 切点可以利用正则匹配类和方法名来指定 切面 (Aspect) 通知和切点共同定义了切面——它是什么，在何时、何处完成其功能 引入 (Introduction) 引入允许我们向现有的类添加新方法或属性 织入 (Weaving) 把切面应用到目标对象并创建新的代理对象的过程 编译期 AspectJ 类加载期 AspectJ 5 的加载时织入(load-time weaving, LTW) 运行期 Spring AOP 切点表达式12345package concert； public interface Performance&#123; public void perform(); &#125; @Pointcut对于频繁使用的切点表达式，可以使用@Pointcut注解定义可重用的切点 123456789101112131415@Aspectpublic class Foo&#123; @Pointcut("execution(** concert.Perfromance.perform(..))") public void performance() &#123;&#125; @Before("performance()") public void foo1()&#123; ... &#125; @AfterReturning("performance()") public void foo2()&#123; ... &#125;&#125; 环绕通知123456789@Around("performance()")public void foo(ProceedingJoinPoint jp) &#123; try&#123; System.out.println("Before"); jp.proceed(); System.out.println("After"); &#125; catch (Throwable e) System.out.println("Exception");&#125; Spring MVC请求过程 传参 查询参数(Query Parameter) @RequestParam 表单参数(Form Parameter) 路径变量(Path Variable) @RequestMapping(value=”/{foo}”) @PathVariable 跨重定向请求传递数据 模型的属性是以请求属性的形式存放在请求中的，重定向后无法存活 使用URL模板进行重定向 1return "redirect:/&#123;foo&#125;" foo作为占位符填充到了URL模板中，foo中不安全字符会被转义 使用flash属性 12345model.addFlashAttribute("key",value);if(model.containAttribute("key"))&#123; ...&#125; 缓存常用缓存工具 Ehcache Redis 缓存注解 注解 作用 @Cacheable 先在缓存中查找条目，没有则执行方法 @CachePut 将方法返回的数据加入缓存 @CacheEvict 将缓存中的数据删除 RESTREST是面向资源的，强调描述应用程序的事务和名词 表述性(Representational) REST资源可以用各种形式来表述，如XML，JSON，HTML 状态(State) REST更关注资源的状态而不是行为 转移(Transfer) REST以某种表述性形式从一个应用转移到另一个应用 REST的行为通过HTTP方法来定义]]></content>
       <categories>
         <category>Java</category>
       </categories>
       <tags>
-        <tag>reading notes</tag>
         <tag>java</tag>
         <tag>spring</tag>
+        <tag>reading notes</tag>
       </tags>
   </entry>
   <entry>
@@ -66,8 +77,8 @@
         <category>Docker</category>
       </categories>
       <tags>
-        <tag>docker</tag>
         <tag>reading notes</tag>
+        <tag>docker</tag>
       </tags>
   </entry>
   <entry>

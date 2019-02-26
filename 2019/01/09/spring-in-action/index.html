@@ -109,7 +109,7 @@
 
 
   <meta name="description" content="面向切面编程 AOP(aspect-oriented programming)AOP术语 通知(Advice)  切面的工作，称为通知    前置通知 (Before) 后置通知 (After) 返回通知 (After-returning) 异常通知 (After-throwing) 环绕通知 (Around) : 在被通知的方法调用前后执行自定义行为   连接点 (Join Point)  连接">
-<meta name="keywords" content="reading notes,java,spring">
+<meta name="keywords" content="java,spring,reading notes">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《Spring实战》笔记">
 <meta property="og:url" content="https://yaoxv.github.io/2019/01/09/spring-in-action/index.html">
@@ -117,7 +117,10 @@
 <meta property="og:description" content="面向切面编程 AOP(aspect-oriented programming)AOP术语 通知(Advice)  切面的工作，称为通知    前置通知 (Before) 后置通知 (After) 返回通知 (After-returning) 异常通知 (After-throwing) 环绕通知 (Around) : 在被通知的方法调用前后执行自定义行为   连接点 (Join Point)  连接">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://blog-1251789414.cos.ap-shanghai.myqcloud.com/spring%20in%20action/spring-in-action-1.png">
-<meta property="og:updated_time" content="2019-01-11T06:26:21.779Z">
+<meta property="og:image" content="https://blog-1251789414.cos.ap-shanghai.myqcloud.com/spring%20in%20action/spring-in-action-2.png">
+<meta property="og:image" content="https://blog-1251789414.cos.ap-shanghai.myqcloud.com/spring%20in%20action/spring-in-action-3.png">
+<meta property="og:image" content="https://blog-1251789414.cos.ap-shanghai.myqcloud.com/spring%20in%20action/spring-in-action-4.png">
+<meta property="og:updated_time" content="2019-01-15T08:32:38.118Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《Spring实战》笔记">
 <meta name="twitter:description" content="面向切面编程 AOP(aspect-oriented programming)AOP术语 通知(Advice)  切面的工作，称为通知    前置通知 (Before) 后置通知 (After) 返回通知 (After-returning) 异常通知 (After-throwing) 环绕通知 (Around) : 在被通知的方法调用前后执行自定义行为   连接点 (Join Point)  连接">
@@ -259,7 +262,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">9</span></a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">10</span></a>
   </li>
         
         
@@ -406,7 +409,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-01-11 14:26:21" itemprop="dateModified" datetime="2019-01-11T14:26:21+08:00">2019-01-11</time>
+                <time title="修改时间：2019-01-15 16:32:38" itemprop="dateModified" datetime="2019-01-15T16:32:38+08:00">2019-01-15</time>
               
             
           </span>
@@ -518,6 +521,69 @@
 <h5 id="Pointcut"><a href="#Pointcut" class="headerlink" title="@Pointcut"></a>@Pointcut</h5><p>对于频繁使用的切点表达式，可以使用@Pointcut注解定义可重用的切点</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Foo</span></span>&#123;</span><br><span class="line">    <span class="meta">@Pointcut</span>(<span class="string">"execution(** concert.Perfromance.perform(..))"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">performance</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Before</span>(<span class="string">"performance()"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">foo1</span><span class="params">()</span></span>&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@AfterReturning</span>(<span class="string">"performance()"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">foo2</span><span class="params">()</span></span>&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h5 id="环绕通知"><a href="#环绕通知" class="headerlink" title="环绕通知"></a>环绕通知</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Around</span>(<span class="string">"performance()"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">foo</span><span class="params">(ProceedingJoinPoint jp)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Before"</span>);</span><br><span class="line">        jp.proceed();</span><br><span class="line">        System.out.println(<span class="string">"After"</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Throwable e)</span><br><span class="line">        System.out.println(<span class="string">"Exception"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Spring-MVC"><a href="#Spring-MVC" class="headerlink" title="Spring MVC"></a>Spring MVC</h4><h5 id="请求过程"><a href="#请求过程" class="headerlink" title="请求过程"></a>请求过程</h5><p><img src="https://blog-1251789414.cos.ap-shanghai.myqcloud.com/spring%20in%20action/spring-in-action-2.png" alt=""></p>
+<h5 id="传参"><a href="#传参" class="headerlink" title="传参"></a>传参</h5><ul>
+<li><p>查询参数(Query Parameter)</p>
+<p>@RequestParam</p>
+</li>
+<li><p>表单参数(Form Parameter)</p>
+</li>
+<li><p>路径变量(Path Variable)</p>
+<p>@RequestMapping(value=”/{foo}”)</p>
+<p>@PathVariable</p>
+</li>
+</ul>
+<h5 id="跨重定向请求传递数据"><a href="#跨重定向请求传递数据" class="headerlink" title="跨重定向请求传递数据"></a>跨重定向请求传递数据</h5><p><img src="https://blog-1251789414.cos.ap-shanghai.myqcloud.com/spring%20in%20action/spring-in-action-3.png" alt=""></p>
+<p>模型的属性是以请求属性的形式存放在请求中的，重定向后无法存活</p>
+<ol>
+<li><p>使用URL模板进行重定向</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="string">"redirect:/&#123;foo&#125;"</span></span><br></pre></td></tr></table></figure>
+<p>foo作为占位符填充到了URL模板中，foo中不安全字符会被转义</p>
+</li>
+<li><p>使用flash属性</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">model.addFlashAttribute(<span class="string">"key"</span>,value);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(model.containAttribute(<span class="string">"key"</span>))&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><img src="https://blog-1251789414.cos.ap-shanghai.myqcloud.com/spring%20in%20action/spring-in-action-4.png" alt=""></p>
+<h4 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h4><h5 id="常用缓存工具"><a href="#常用缓存工具" class="headerlink" title="常用缓存工具"></a>常用缓存工具</h5><ul>
+<li>Ehcache</li>
+<li>Redis</li>
+</ul>
+<h5 id="缓存注解"><a href="#缓存注解" class="headerlink" title="缓存注解"></a>缓存注解</h5><table>
+<thead>
+<tr>
+<th>注解</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>@Cacheable</td>
+<td>先在缓存中查找条目，没有则执行方法</td>
+</tr>
+<tr>
+<td>@CachePut</td>
+<td>将方法返回的数据加入缓存</td>
+</tr>
+<tr>
+<td>@CacheEvict</td>
+<td>将缓存中的数据删除</td>
+</tr>
+</tbody>
+</table>
+<h4 id="REST"><a href="#REST" class="headerlink" title="REST"></a>REST</h4><p>REST是面向资源的，强调描述应用程序的事务和名词</p>
+<ul>
+<li><p>表述性(Representational)</p>
+<p>REST资源可以用各种形式来表述，如XML，JSON，HTML</p>
+</li>
+<li><p>状态(State)</p>
+<p>REST更关注资源的状态而不是行为</p>
+</li>
+<li><p>转移(Transfer)</p>
+<p>REST以某种表述性形式从一个应用转移到另一个应用</p>
+</li>
+</ul>
+<p>REST的行为通过HTTP方法来定义</p>
 
       
     </div>
@@ -538,11 +604,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/reading-notes/" rel="tag"># reading notes</a>
-          
             <a href="/tags/java/" rel="tag"># java</a>
           
             <a href="/tags/spring/" rel="tag"># spring</a>
+          
+            <a href="/tags/reading-notes/" rel="tag"># reading notes</a>
           
         </div>
       
@@ -646,7 +712,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -758,7 +824,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#面向切面编程-AOP-aspect-oriented-programming"><span class="nav-number">1.</span> <span class="nav-text">面向切面编程 AOP(aspect-oriented programming)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#AOP术语"><span class="nav-number">1.1.</span> <span class="nav-text">AOP术语</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#切点表达式"><span class="nav-number">1.2.</span> <span class="nav-text">切点表达式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Pointcut"><span class="nav-number">1.3.</span> <span class="nav-text">@Pointcut</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#环绕通知"><span class="nav-number">1.4.</span> <span class="nav-text">环绕通知</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#面向切面编程-AOP-aspect-oriented-programming"><span class="nav-number">1.</span> <span class="nav-text">面向切面编程 AOP(aspect-oriented programming)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#AOP术语"><span class="nav-number">1.1.</span> <span class="nav-text">AOP术语</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#切点表达式"><span class="nav-number">1.2.</span> <span class="nav-text">切点表达式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Pointcut"><span class="nav-number">1.3.</span> <span class="nav-text">@Pointcut</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#环绕通知"><span class="nav-number">1.4.</span> <span class="nav-text">环绕通知</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Spring-MVC"><span class="nav-number">2.</span> <span class="nav-text">Spring MVC</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#请求过程"><span class="nav-number">2.1.</span> <span class="nav-text">请求过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#传参"><span class="nav-number">2.2.</span> <span class="nav-text">传参</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#跨重定向请求传递数据"><span class="nav-number">2.3.</span> <span class="nav-text">跨重定向请求传递数据</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#缓存"><span class="nav-number">3.</span> <span class="nav-text">缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#常用缓存工具"><span class="nav-number">3.1.</span> <span class="nav-text">常用缓存工具</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#缓存注解"><span class="nav-number">3.2.</span> <span class="nav-text">缓存注解</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#REST"><span class="nav-number">4.</span> <span class="nav-text">REST</span></a></li></ol></div>
             
 
           </div>

@@ -108,21 +108,27 @@
 
 
 
-  <meta name="keywords" content="coding,blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Blog">
-<meta property="og:url" content="https://yaoxv.github.io/tags/design-pattern/index.html">
+  <meta name="description" content="本文主要分析ManageIQ的工程结构，明确Provider的作用（将云服务商API获取的数据转变为符合ManageIQ需求的数据）。 ManageIQ的工程结构ManageIQ的工程结构示意图如下  Provider的作用就是为了适配不同的云服务商所提供的数据，将其转变为符合ManageIQ的数据。 Provider为了获取云服务商提供的数据，需要请求其各自的API。为了更好的解耦代码，Prov">
+<meta name="keywords" content="manageiq">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ManageIQ Provider开发（四）：ManageIQ的工程结构">
+<meta property="og:url" content="https://yaoxv.github.io/2019/02/26/manageiq-project-layout/index.html">
 <meta property="og:site_name" content="Blog">
+<meta property="og:description" content="本文主要分析ManageIQ的工程结构，明确Provider的作用（将云服务商API获取的数据转变为符合ManageIQ需求的数据）。 ManageIQ的工程结构ManageIQ的工程结构示意图如下  Provider的作用就是为了适配不同的云服务商所提供的数据，将其转变为符合ManageIQ的数据。 Provider为了获取云服务商提供的数据，需要请求其各自的API。为了更好的解耦代码，Prov">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://blog-1251789414.cos.ap-shanghai.myqcloud.com/manageiq/manageiq-project-layout-1.png">
+<meta property="og:updated_time" content="2019-02-26T03:24:30.467Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Blog">
+<meta name="twitter:title" content="ManageIQ Provider开发（四）：ManageIQ的工程结构">
+<meta name="twitter:description" content="本文主要分析ManageIQ的工程结构，明确Provider的作用（将云服务商API获取的数据转变为符合ManageIQ需求的数据）。 ManageIQ的工程结构ManageIQ的工程结构示意图如下  Provider的作用就是为了适配不同的云服务商所提供的数据，将其转变为符合ManageIQ的数据。 Provider为了获取云服务商提供的数据，需要请求其各自的API。为了更好的解耦代码，Prov">
+<meta name="twitter:image" content="https://blog-1251789414.cos.ap-shanghai.myqcloud.com/manageiq/manageiq-project-layout-1.png">
 
 
 
 
 
 
-  <link rel="canonical" href="https://yaoxv.github.io/tags/design-pattern/">
+  <link rel="canonical" href="https://yaoxv.github.io/2019/02/26/manageiq-project-layout/">
 
 
 
@@ -132,7 +138,7 @@
   };
 </script>
 
-  <title>标签: design pattern | Blog</title>
+  <title>ManageIQ Provider开发（四）：ManageIQ的工程结构 | Blog</title>
   
 
 
@@ -190,7 +196,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -235,7 +241,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
     <a href="/tags/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">12</span></a>
   </li>
@@ -321,82 +327,215 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h2>design pattern<small>标签</small>
-        </h2>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yaoxv.github.io/2019/02/26/manageiq-project-layout/">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yaoxv">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/pokemon.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/12/10/talking-about-design-pattern/" itemprop="url">
-              
-                <span itemprop="name">《大话设计模式》笔记</span>
-              
-            </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">ManageIQ Provider开发（四）：ManageIQ的工程结构
+              
+            
+          </h2>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-12-10T12:49:19+08:00" content="2018-12-10">
-          12-10
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
 
-    </header>
-  </article>
+            
+            
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-02-26 11:24:30" itemprop="dateCreated datePublished" datetime="2019-02-26T11:24:30+08:00">2019-02-26</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/ManageIQ/" itemprop="url" rel="index"><span itemprop="name">ManageIQ</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/02/26/manageiq-project-layout/" class="leancloud_visitors" data-flag-title="ManageIQ Provider开发（四）：ManageIQ的工程结构">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本文主要分析ManageIQ的工程结构，明确Provider的作用（将云服务商API获取的数据转变为符合ManageIQ需求的数据）。</p>
+<h4 id="ManageIQ的工程结构"><a href="#ManageIQ的工程结构" class="headerlink" title="ManageIQ的工程结构"></a>ManageIQ的工程结构</h4><p>ManageIQ的工程结构示意图如下</p>
+<p><img src="https://blog-1251789414.cos.ap-shanghai.myqcloud.com/manageiq/manageiq-project-layout-1.png" alt=""></p>
+<p>Provider的作用就是为了适配不同的云服务商所提供的数据，将其转变为符合ManageIQ的数据。</p>
+<p>Provider为了获取云服务商提供的数据，需要请求其各自的API。为了更好的解耦代码，Provider不直接与API进行交互，而是通过官方提供或开源的SDK进行交互。</p>
+<p>这些SDK不仅解耦了代码，还对API数据进行了初步的封装，将json转变为了类，方便了Provider进行调用。</p>
+<p>AMAZON-SDK为亚马逊官方提供的，功能比较齐全，代码量比较大，参照其开发自己需要的SDK比较费时费力；FOG-GOOGLE是开源的云服务器API交互SDK，基于FOG二次开发比较简单，快捷。</p>
+<h4 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h4><p><a href="https://github.com/ManageIQ/manageiq-providers-amazon" target="_blank" rel="noopener">ManageIQ-Providers-amazon</a></p>
+<p><a href="https://github.com/ManageIQ/manageiq-providers-google" target="_blank" rel="noopener">ManageIQ-Providers-google</a></p>
+<p><a href="https://github.com/fog/fog-google" target="_blank" rel="noopener">fog-google</a></p>
+<p><a href="https://github.com/aws/aws-sdk-ruby/tree/version-2" target="_blank" rel="noopener">amazon-sdk(v2)</a></p>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/manageiq/" rel="tag"># manageiq</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/11/manageiq-local-ui/" rel="next" title="ManageIQ Provider开发（三）：使用自定义前端页面">
+                <i class="fa fa-chevron-left"></i> ManageIQ Provider开发（三）：使用自定义前端页面
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
 
         </div>
         
@@ -417,8 +556,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -537,6 +685,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#ManageIQ的工程结构"><span class="nav-number">1.</span> <span class="nav-text">ManageIQ的工程结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考文档"><span class="nav-number">2.</span> <span class="nav-text">参考文档</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -676,6 +840,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.5.0"></script>
+
+
 
   
 
@@ -705,6 +873,28 @@
 
     
 
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitment({
+            id: window.location.pathname,
+            owner: 'Yaoxv',
+            repo: 'yaoxv.github.io',
+            
+            oauth: {
+            
+            
+                client_secret: '015374e28982b470f09b2a913baa779cc5996e68',
+            
+                client_id: '4154f978ea591b93ef7e'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
     
 
 
@@ -1043,43 +1233,42 @@
   
   <script>
     
-    function showTime(Counter) {
-      var entries = [];
+    function addCount(Counter) {
       var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
 
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      Counter('get', '/classes/Counter', { where: JSON.stringify({ url: { "$in": entries } }) })
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
         .done(function ({ results }) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.url;
-            var time = item.time;
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
+          if (results.length > 0) {
+            var counter = results[0];
+            
+            Counter('put', `/classes/Counter/${counter.objectId}`, JSON.stringify({ time: { "__op":"Increment", "amount":1 } }))
+            
+            .done(function () {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.time + 1);
+            })
+            
+            .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+            })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1}))
+                .done(function () {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function () {
+                  console.log('Failed to create');
+                });
+            
           }
         })
-        .fail(function ({ responseJSON }) {
-          console.log("LeanCloud Counter Error: " + responseJSON.code + " " + responseJSON.error);
-        });
+      .fail(function ({ responseJSON }) {
+        console.log('LeanCloud Counter Error:' + responseJSON.code + " " + responseJSON.error);
+      });
     }
     
 
@@ -1099,9 +1288,7 @@
             });
           };
           
-          if ($('.post-title-link').length >= 1) {
-            showTime(Counter);
-          }
+          addCount(Counter);
           
         })
     });
