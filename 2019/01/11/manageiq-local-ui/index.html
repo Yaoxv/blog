@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="Blog">
 <meta property="og:description" content="在ManageIQ安装过程中，会从github上拉取manageiq-ui-classic库。现在我们开发新的Provider就需要修改manageiq-ui-classic库，使其支持新的Provider。 克隆源码12cd manangeiq/pluginsgit clone -b gaprindashvili-7 https://github.com/ManageIQ/manageiq-ui">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-11T06:43:06.000Z">
+<meta property="og:updated_time" content="2019-03-02T03:05:27.912Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ManageIQ Provider开发（三）：使用自定义前端页面">
 <meta name="twitter:description" content="在ManageIQ安装过程中，会从github上拉取manageiq-ui-classic库。现在我们开发新的Provider就需要修改manageiq-ui-classic库，使其支持新的Provider。 克隆源码12cd manangeiq/pluginsgit clone -b gaprindashvili-7 https://github.com/ManageIQ/manageiq-ui">
@@ -257,7 +257,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">10</span></a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">11</span></a>
   </li>
         
         
@@ -387,12 +387,24 @@
                 
               
 
-              <time title="创建时间：2019-01-11 14:30:24 / 修改时间：14:43:06" itemprop="dateCreated datePublished" datetime="2019-01-11T14:30:24+08:00">2019-01-11</time>
+              <time title="创建时间：2019-01-11 14:30:24" itemprop="dateCreated datePublished" datetime="2019-01-11T14:30:24+08:00">2019-01-11</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-02 11:05:27" itemprop="dateModified" datetime="2019-03-02T11:05:27+08:00">2019-03-02</time>
               
             
           </span>
@@ -457,6 +469,9 @@
         <p>在ManageIQ安装过程中，会从github上拉取manageiq-ui-classic库。现在我们开发新的Provider就需要修改manageiq-ui-classic库，使其支持新的Provider。</p>
 <h4 id="克隆源码"><a href="#克隆源码" class="headerlink" title="克隆源码"></a>克隆源码</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> manangeiq/plugins</span><br><span class="line">git <span class="built_in">clone</span> -b gaprindashvili-7 https://github.com/ManageIQ/manageiq-ui-classic.git</span><br></pre></td></tr></table></figure>
 <h4 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> manageiq/bundler.d</span><br><span class="line">vim local_plugins.rb</span><br><span class="line"></span><br><span class="line">override_gem <span class="string">'manageiq-ui-classic'</span>, :path =&gt; File.expand_path(<span class="string">'../plugins/manageiq-ui-classic'</span>, __dir__)</span><br></pre></td></tr></table></figure>
+<h4 id="修改源代码"><a href="#修改源代码" class="headerlink" title="修改源代码"></a>修改源代码</h4><p>manageiq/app/assets/javascripts/controllers/ems_common/ems_common_form_controller.js</p>
+<p>中为各provider验证方式的前端显示，根据需要增加自己的验证方式</p>
+<p>assesskey方式可参考代码中amazon的相关代码，搜索ec2即可定位相关代码</p>
 <h4 id="安装本地ui"><a href="#安装本地ui" class="headerlink" title="安装本地ui"></a>安装本地ui</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> manageiq</span><br><span class="line">bundle install</span><br></pre></td></tr></table></figure>
 
       
@@ -582,7 +597,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-count">11</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -694,7 +709,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#克隆源码"><span class="nav-number">1.</span> <span class="nav-text">克隆源码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改配置文件"><span class="nav-number">2.</span> <span class="nav-text">修改配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装本地ui"><span class="nav-number">3.</span> <span class="nav-text">安装本地ui</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#克隆源码"><span class="nav-number">1.</span> <span class="nav-text">克隆源码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改配置文件"><span class="nav-number">2.</span> <span class="nav-text">修改配置文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改源代码"><span class="nav-number">3.</span> <span class="nav-text">修改源代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装本地ui"><span class="nav-number">4.</span> <span class="nav-text">安装本地ui</span></a></li></ol></div>
             
 
           </div>

@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[ManageIQ Provider开发（五）：Provider-google的代码结构]]></title>
+    <url>%2F2019%2F03%2F02%2Fmanageiq-providers-google-layout%2F</url>
+    <content type="text"><![CDATA[在《ManageIQ的工程结构》中，已经明确了providers的作用。接下来以provider-google为例，分析其代码结构。 provider的主要功能代码集中在app文件夹下中，根据功能划分为多个manager，分别为cloud_manager、network_manager, provider-amazon还有storage_manager。 Cloud_managercloud_manager是provider的主入口，负责创建、验证服务器，收集服务器基本信息，如可用区域、可用套餐、已拥有的虚拟主机等。 cloud_manager的代码结构： cloud_manager.rb为主入口，定义了ems(ExtmanagementSystem)的类型、描述、验证方式等 manager_mixin.rb的主要功能为实现与服务器的验证连接 cloud_manager文件夹 有cloud_manager涉及的类，如可用区域、可用套餐等。这些类都比较简单，仅继承managerIQ中的对应类 refresh的功能为数据转换，即把fog-google获得数据变为符合manageiq的数据 ​ 123456789101112131415161718192021222324252627282930313233343536373839# refresh_parser.rb# 定义了进行数据转换的方法def ems_inv_to_hashes log_header = "Collecting data for EMS : [#&#123;@ems.name&#125;] id: [#&#123;@ems.id&#125;]" _log.info("#&#123;log_header&#125;...") get_zones get_flavors get_volumes get_snapshots get_images get_instances # Must occur after get_volumes is called _log.info("#&#123;log_header&#125;...Complete") link_volumes_to_base_snapshots @dataenddef get_zones # 获取所有可用域 zones = @connection.zones.all # 数据进行转换 process_collection(zones, :availability_zones) &#123; |zone| parse_zone(zone) &#125;enddef parse_zone(zone) name = uid = zone.name type = ManageIQ::Providers::Google::CloudManager::AvailabilityZone.name new_result = &#123; :type =&gt; type, :ems_ref =&gt; uid, :name =&gt; name, &#125; return uid, new_resultend Network_managernetwork_manager的结构与cloud_manager类似 参考文档ManageIQ-Providers-google]]></content>
+      <categories>
+        <category>ManageIQ</category>
+      </categories>
+      <tags>
+        <tag>manageiq</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[ManageIQ Provider开发（四）：ManageIQ的工程结构]]></title>
     <url>%2F2019%2F02%2F26%2Fmanageiq-project-layout%2F</url>
     <content type="text"><![CDATA[本文主要分析ManageIQ的工程结构，明确Provider的作用（将云服务商API获取的数据转变为符合ManageIQ需求的数据）。 ManageIQ的工程结构ManageIQ的工程结构示意图如下 Provider的作用就是为了适配不同的云服务商所提供的数据，将其转变为符合ManageIQ的数据。 Provider为了获取云服务商提供的数据，需要请求其各自的API。为了更好的解耦代码，Provider不直接与API进行交互，而是通过官方提供或开源的SDK进行交互。 这些SDK不仅解耦了代码，还对API数据进行了初步的封装，将json转变为了类，方便了Provider进行调用。 AMAZON-SDK为亚马逊官方提供的，功能比较齐全，代码量比较大，参照其开发自己需要的SDK比较费时费力；FOG-GOOGLE是开源的云服务器API交互SDK，基于FOG二次开发比较简单，快捷。 参考文档ManageIQ-Providers-amazon ManageIQ-Providers-google fog-google amazon-sdk(v2)]]></content>
@@ -14,7 +25,7 @@
   <entry>
     <title><![CDATA[ManageIQ Provider开发（三）：使用自定义前端页面]]></title>
     <url>%2F2019%2F01%2F11%2Fmanageiq-local-ui%2F</url>
-    <content type="text"><![CDATA[在ManageIQ安装过程中，会从github上拉取manageiq-ui-classic库。现在我们开发新的Provider就需要修改manageiq-ui-classic库，使其支持新的Provider。 克隆源码12cd manangeiq/pluginsgit clone -b gaprindashvili-7 https://github.com/ManageIQ/manageiq-ui-classic.git 修改配置文件1234cd manageiq/bundler.dvim local_plugins.rboverride_gem 'manageiq-ui-classic', :path =&gt; File.expand_path('../plugins/manageiq-ui-classic', __dir__) 安装本地ui12cd manageiqbundle install]]></content>
+    <content type="text"><![CDATA[在ManageIQ安装过程中，会从github上拉取manageiq-ui-classic库。现在我们开发新的Provider就需要修改manageiq-ui-classic库，使其支持新的Provider。 克隆源码12cd manangeiq/pluginsgit clone -b gaprindashvili-7 https://github.com/ManageIQ/manageiq-ui-classic.git 修改配置文件1234cd manageiq/bundler.dvim local_plugins.rboverride_gem 'manageiq-ui-classic', :path =&gt; File.expand_path('../plugins/manageiq-ui-classic', __dir__) 修改源代码manageiq/app/assets/javascripts/controllers/ems_common/ems_common_form_controller.js 中为各provider验证方式的前端显示，根据需要增加自己的验证方式 assesskey方式可参考代码中amazon的相关代码，搜索ec2即可定位相关代码 安装本地ui12cd manageiqbundle install]]></content>
       <categories>
         <category>ManageIQ</category>
       </categories>
@@ -30,9 +41,9 @@
         <category>Java</category>
       </categories>
       <tags>
+        <tag>reading notes</tag>
         <tag>java</tag>
         <tag>spring</tag>
-        <tag>reading notes</tag>
       </tags>
   </entry>
   <entry>
@@ -77,8 +88,8 @@
         <category>Docker</category>
       </categories>
       <tags>
-        <tag>reading notes</tag>
         <tag>docker</tag>
+        <tag>reading notes</tag>
       </tags>
   </entry>
   <entry>

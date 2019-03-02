@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://yaoxv.github.io/2019/03/02/manageiq-providers-google-layout/</loc>
+    
+    <lastmod>2019-03-02T03:08:36.709Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://yaoxv.github.io/2019/02/26/manageiq-project-layout/</loc>
     
-    <lastmod>2019-02-26T03:24:30.467Z</lastmod>
+    <lastmod>2019-03-02T03:07:11.701Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://yaoxv.github.io/2019/01/11/manageiq-local-ui/</loc>
+    
+    <lastmod>2019-03-02T03:05:27.912Z</lastmod>
     
   </url>
   
@@ -12,13 +26,6 @@
     <loc>https://yaoxv.github.io/2019/01/09/spring-in-action/</loc>
     
     <lastmod>2019-01-15T08:32:38.118Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://yaoxv.github.io/2019/01/11/manageiq-local-ui/</loc>
-    
-    <lastmod>2019-01-11T06:43:06.000Z</lastmod>
     
   </url>
   
