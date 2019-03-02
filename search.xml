@@ -34,19 +34,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[《Spring实战》笔记]]></title>
-    <url>%2F2019%2F01%2F09%2Fspring-in-action%2F</url>
-    <content type="text"><![CDATA[面向切面编程 AOP(aspect-oriented programming)AOP术语 通知(Advice) 切面的工作，称为通知 前置通知 (Before) 后置通知 (After) 返回通知 (After-returning) 异常通知 (After-throwing) 环绕通知 (Around) : 在被通知的方法调用前后执行自定义行为 连接点 (Join Point) 连接点可以是调用方法时、抛出异常时、甚至是修改字段时 切点 (Pointcut) 切点可以利用正则匹配类和方法名来指定 切面 (Aspect) 通知和切点共同定义了切面——它是什么，在何时、何处完成其功能 引入 (Introduction) 引入允许我们向现有的类添加新方法或属性 织入 (Weaving) 把切面应用到目标对象并创建新的代理对象的过程 编译期 AspectJ 类加载期 AspectJ 5 的加载时织入(load-time weaving, LTW) 运行期 Spring AOP 切点表达式12345package concert； public interface Performance&#123; public void perform(); &#125; @Pointcut对于频繁使用的切点表达式，可以使用@Pointcut注解定义可重用的切点 123456789101112131415@Aspectpublic class Foo&#123; @Pointcut("execution(** concert.Perfromance.perform(..))") public void performance() &#123;&#125; @Before("performance()") public void foo1()&#123; ... &#125; @AfterReturning("performance()") public void foo2()&#123; ... &#125;&#125; 环绕通知123456789@Around("performance()")public void foo(ProceedingJoinPoint jp) &#123; try&#123; System.out.println("Before"); jp.proceed(); System.out.println("After"); &#125; catch (Throwable e) System.out.println("Exception");&#125; Spring MVC请求过程 传参 查询参数(Query Parameter) @RequestParam 表单参数(Form Parameter) 路径变量(Path Variable) @RequestMapping(value=”/{foo}”) @PathVariable 跨重定向请求传递数据 模型的属性是以请求属性的形式存放在请求中的，重定向后无法存活 使用URL模板进行重定向 1return "redirect:/&#123;foo&#125;" foo作为占位符填充到了URL模板中，foo中不安全字符会被转义 使用flash属性 12345model.addFlashAttribute("key",value);if(model.containAttribute("key"))&#123; ...&#125; 缓存常用缓存工具 Ehcache Redis 缓存注解 注解 作用 @Cacheable 先在缓存中查找条目，没有则执行方法 @CachePut 将方法返回的数据加入缓存 @CacheEvict 将缓存中的数据删除 RESTREST是面向资源的，强调描述应用程序的事务和名词 表述性(Representational) REST资源可以用各种形式来表述，如XML，JSON，HTML 状态(State) REST更关注资源的状态而不是行为 转移(Transfer) REST以某种表述性形式从一个应用转移到另一个应用 REST的行为通过HTTP方法来定义]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>reading notes</tag>
-        <tag>java</tag>
-        <tag>spring</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[ManageIQ Provider开发（二）：创建新的Provider]]></title>
     <url>%2F2019%2F01%2F07%2Fmanageiq-provider-generator%2F</url>
     <content type="text"><![CDATA[创建Provider123cd manageiqbundle exec rails generate provider foo_cloud --dummy 修改配置文件Provider生成器会在manageiq/Gemfile文件中添加foo_cloud,但还需要进一步修改 123456# generator自动生成group :vmware, :manageiq_default do manageiq_plugin "manageiq-providers-vmware"manageiq_plugin "manageiq-providers-foo_cloud" # TODO: Sort alphabetically... gem "vmware_web_service", "~&gt;0.3.0"end 123456789# 修改后的Gemfilegroup :foo_cloud, :manageiq_default do gem 'manageiq-providers-foo_cloud', :path =&gt; 'plugins/manageiq-providers-foo_cloud'endgroup :vmware, :manageiq_default do manageiq_plugin "manageiq-providers-vmware" gem "vmware_web_service", "~&gt;0.3.0"end 修改lib/workers/miq_worker_types.rb文件 在MIQ_WORKER_TYPES中添加 1234"ManageIQ::Providers::FooCloud::CloudManager::EventCatcher" =&gt; %i(manageiq_default),"ManageIQ::Providers::FooCloud::CloudManager::MetricsCollectorWorker" =&gt; %i(manageiq_default),"ManageIQ::Providers::FooCloud::CloudManager::RefreshWorker" =&gt; %i(manageiq_default),"ManageIQ::Providers::FooCloud::NetworkManager::RefreshWorker" =&gt; %i(manageiq_default), 在MIQ_WORKER_TYPES_IN_KILL_ORDER中添加 1234ManageIQ::Providers::FooCloud::CloudManager::MetricsCollectorWorkerManageIQ::Providers::FooCloud::CloudManager::RefreshWorkerManageIQ::Providers::FooCloud::NetworkManager::RefreshWorkerManageIQ::Providers::FooCloud::CloudManager::EventCatcher 安装新的Provider12cd manageiqbundle install 参考文档ManageIQ Provider生成器]]></content>
@@ -66,42 +53,6 @@
       </categories>
       <tags>
         <tag>manageiq</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[《大话设计模式》笔记]]></title>
-    <url>%2F2018%2F12%2F10%2Ftalking-about-design-pattern%2F</url>
-    <content type="text"><![CDATA[简单工厂模式 工厂根据传入参数判断，实例化合适的对象，通过多态返回父类的方式 策略模式 定义了算法家族，分别封装起来，使算法的变化不会影响使用算法的客户 装饰模式 为已有功能动态地添加更多功能 代理模式 为其他对象提供一种代理以控制这个对象的访问 工厂方法模式 定义一个用于创建对象的接口，让子类决定实例化哪一类。使一个类的实例化延迟到其子类 原型模式 用原型实例指定创建对象的种类，并通过拷贝这些原型创建新的对象 模板方法模式 定义一个操作中的算法的骨架，将一些步骤延迟到子类中 外观模式 为子系统中的一组接口提供统一的界面 建造者模式 将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示 观察者模式/发布-订阅模式 定义了一种一对多的依赖关系，让多个观察者对象同时监听某一个主题对象。当主题对象的状态发生变化时，会通知所有观察者对象，是他们能够自动更新自己 抽象工厂模式 提供一个创建一系列相关或相互依赖对象的接口，而无需指定他们具体的类 状态模式 解决一个对象状态转换的条件表达式过于复杂的情况。把状态的判断逻辑转移到表示不同状态的一系列类中，简化复杂的判断逻辑 适配器模式 将一个类的接口转换成另一个接口，使得原本不能兼容的类可以一起工作 备忘录模式 不破坏封装性的前提下，捕获一个对象的内部状态，并在该对象之外保存这个状态，以便以后恢复状态 组合模式 将对象组合成树形结构以表示“部分-整体”的层次结构。组合模式使得用户对单个对象和组合对象的使用具有一致性 迭代器模式 提供一种方法顺序访问一个聚合对象中各个元素，而又不暴露该对象的内部表示 单例模式 保证一个类仅有一个实例，并提供一个访问它的全局访问点 饿汉式单例类：在自己被加载时将自己实例化，提前占用系统资源 懒汉式单例类：在第一次被引用时将自己实例化，面临多线程访问的安全问题，需要双重锁定处理 桥接模式 将抽象部分与它的实现部分分离，使他们都可以独立变化 命令模式 将一个请求封装为一个对象，从而使你可用不同的请求对客户进行参数化；对请求排队或记录请求日志，以及支持可撤销的操作 职责链模式 使多个对象都有机会处理请求，从而避免请求的发送者和接收者之间的耦合关系。将这个对象连成一条链，并沿着这条链传递该请求，直到有一个对象处理它为止 中介者模式 用一个中介对象来封装一系列的对象交互。中介者使各对象不需要显式地相互引用，从而使其耦合松散，而且可以独立地改变他们之间的交互 享元模式 运用共享技术有效地支持大量细颗粒度的对象 解释器模式 给定一个语言，定义它的文法的一种表示，并定义一个解释器，这个解释器使用该表示来解释语言中的句子 访问者模式 表示一个作用于某对象结构中的各元素的操作。它使你可以在不改变各元素的类的前提下定义作用与这些元素的新操作]]></content>
-      <categories>
-        <category>Design Pattern</category>
-      </categories>
-      <tags>
-        <tag>reading notes</tag>
-        <tag>design pattern</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[《Docker技术入门与实战》笔记]]></title>
-    <url>%2F2018%2F12%2F04%2Fdocker-practice%2F</url>
-    <content type="text"><![CDATA[Docker 安装与配置 系统 : Ubuntu 18 安装1sudo apt install docker.io 配置 以普通用户启动docker 官方文档对于非root用户启动docker的说明 The Docker daemon binds to a Unix socket instead of a TCP port. By default that Unix socket is owned by the user root and other users can only access it using sudo. The Docker daemon always runs as the root user. If you don’t want to preface the docker command with sudo, create a Unix group called docker and add users to it. When the Docker daemon starts, it creates a Unix socket accessible by members of the docker group. 1234567891011121314# 创建docker组sudo groupadd docker# 添加当前用户到docker组sudo usermod -aG docker $username# 注销并重新登陆# 在虚拟机上可能需要重启# 重启docker服务sudo systemctl restart docker# 如果还存在/var/run/docker.sock的权限问题，尝试一下命令sudo chmod a+rw /var/run/docker.sock 修改默认镜像仓库为阿里云 https://cr.console.aliyun.com/#/accelerator 查看个人镜像地址并根据操作文档修改 删除镜像对于存在容器依赖的镜像，需要先删除该镜像的所有容器，再删除镜像 不要使用 -f 来强制删除 进入容器 attach --detach-keys[=[]]设置退出attach的快捷键，默认为CTRL-p + CTRL-q 多个窗口使用attach命令进入同一个容器时，所有窗口会同步显示。一个窗口因为某个命令阻塞时，所有窗口都无法进行其他操作了 exec 1docker exec -it $contianer_id /bin/bash nsenter 12345# 获取容器的PIDPID=$(docker inspect --format &#123;&#123;.State.Pid&#125;&#125; &lt;container_name_or_ID&gt;)# 进入容器nsenter --target $PID --mount --uts --ipc --net --pid 数据管理数据卷 Date Volumes容器内数据直接映射到本地主机环境 12345# 挂在主机目录/src/webapp到容器的/opt/webapp为数据卷docker run -d -P --name web -v /src/webapp:/opt/webapp training/webapp python app.py# 挂载的数据卷的默认权限为rw，可以指定为rodocker run -d -P --name web -v /src/webapp:/opt/webapp:ro training/webapp python app.py 数据卷容器 Date Volume Containers多个容器间共享数据 1234567891011121314151617# 创建数据卷容器dbdata，挂载到数据卷容器目录/dbdatadocker run -it -v /dbdata --name dbdata ubuntu# 其他容器挂载dbdatadocker run -it --volumes-from dbdata --name db ubuntu# 在任意容器中改变dbdata目录下的文件，所有容器都能看到改变# 备份# 利用ubuntu镜像创建容器worker，并挂载dbdata数据卷，挂载本地当前目录到worker的/backup目录，容器启动后打包/dbdata目录为tardocker run --volumes-from dbdata -v $(pwd):/backup --name worker ubuntu tar cvf /backup/backup.tar /dbdata# 恢复# 1.创建另一个数据卷容器# 2.创建另一个容器把备份解压到1中的数据卷容器docker run -v /dbdata --name dbdata2 ubuntu /bin/bashdocker run --volumes-from dbdata2 -v $(pwd):/backup busybox tar xvf /backup/backup.tar 挂载的数据卷容器不需要保持在运行状态 命名空间命名空间保证了各个容器之间不会相互影响。 进程命名空间 docker进程为父进程，容器的进程为子进程 网络命名空间 Docker采用虚拟网络设备(Virtual Network Device)将不同命名空间的网络设备连接到一起 默认情况下，容器中的虚拟网卡将同本地主机的docker0网桥连接在一起 IPC命名空间 同一个IPC命名空间内的进程可以进行交互，不同空间的进程无法交互 挂载命名空间 UTS命名空间 用户命名空间]]></content>
-      <categories>
-        <category>Docker</category>
-      </categories>
-      <tags>
-        <tag>docker</tag>
-        <tag>reading notes</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[《MySQL必知必会》笔记]]></title>
-    <url>%2F2018%2F12%2F03%2Fmysql-crash-course%2F</url>
-    <content type="text"><![CDATA[计算次序 AND的计算次序高于OR的计算次序 vend_id = 1003 与 prod_price &gt;= 10 先计算，之后再和 vend_id = 1002 进行计算，所以结果为 id = 1002的商品和 id = 1003 且 price &gt;= 10 的商品。 查询区分大小写建表时设置字段区分大小写1234CREATE TABLE t ( a VARCHAR(32) BINARY, b VARCHAR(32)); VARCHAR BINARY以字节存储，大小写敏感 VARCHAR以字符存储，大小写不敏感 1234CREATE TABLE t ( a varchar(32) COLLATE utf8_bin DEFAULT NULL, b varchar(32) DEFAULT NULL) utf8_bin 将字符串以字节存储，大小写敏感 utf8_genera_ci 大小写不敏感 , ci = case insensitive utf8_genera_cs 大小写敏感 , cs = case sensitive 查询时指定大小写敏感1select * from t where a = binary "xxx"; 别名列别名在MySQL中，可以使用ORDER BY，GROUP BY和HAVING子句中的列别名来引用该列 123456789101112131415#将姓和名拼接为全名，并以全名排序select concat(first_name,' ',last_name) as full_name from tb_user order by full_name;#单价*天数 = 总价，总价大于100select order_id,price*day as total from tb_order having total &gt; 100;#选择消费总额大于100的用户select username,sum(price*day) total from tb_order group by username having total &gt; 100; 表别名123select username,price from tb_user as u,tb_order as u where u.id = o.u_id 表别名只在查询过程中使用，不返回给客户端 WHERE和HAVING的差别 WHERE在数据 分组前进行过滤，HAVING在数据分组后进行过滤。这是一个重要的区别，WHERE排除的行不包括在分组中。这可能会改变计算值，从而影响HAVING子句中基于这些值过滤掉的分组 左联结和右联结LEFT OUTER JOIN 表示从左边的表中选择所有行 RIGHT OUTER JOIN 表示从右边的表中选择所有行 1234# 检索所有用户的用户名和订单信息，包含没有下订单的用户select tb_user.username,tb_order.*from tb_user left outer join tb_orderon tb_user.id = tb_order.u_id; INSERT性能单条INSERT语句处理多个插入比多条INSERT语句快 TRUNCATE删除表并重新创建 1TRUNCATE TABLE table_name 重置自增id 使用truncate：truncate table； 使用修改标识：dbcc checkident (‘table_name’ , reseed, new_reseed_value) ;说明：new_reseed_value是设置的当前标识，下次插入则从new_reseed_value+1开始。如果new_reseed_value小于表中当前标识的值，有可能会产生重复key，会产生 2627 号错误信息。用处：此方法不会清空已有数据。适用于大量删除后修改新的标识，但不能比当前表中最大值小。 使用修改表的方法：alter table tablename auto_increment=new 说明：此方法和上面的二方法类似。也不会清空数据，有可能会出现重复key的可能，所以此方法也只适用于清空表之后重置自增id或者大量删除后修改自增id。 引擎类型 MyISAM 性能极高 支持全文搜索 不支持事务处理 MEMORY 功能与MyISAM相同 数据存储在内存，速度快，适合临时表 InnoDB 可靠的事务处理 不支持全文搜索 外键不能跨引擎 存储过程 优点 减少网络传输耗时 适合业务需求稳定的项目 缺点 消耗数据库资源 不适用需求多变的项目 不便于跨数据库间的移植]]></content>
-      <categories>
-        <category>MySQL</category>
-      </categories>
-      <tags>
-        <tag>reading notes</tag>
-        <tag>mysql</tag>
       </tags>
   </entry>
   <entry>
