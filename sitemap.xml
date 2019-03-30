@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://yaoxv.github.io/2019/03/30/springboot-use-@Value-in-filter/</loc>
+    
+    <lastmod>2019-03-30T02:30:30.312Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://yaoxv.github.io/2019/03/02/manageiq-providers-google-layout/</loc>
     
     <lastmod>2019-03-02T03:08:36.709Z</lastmod>
