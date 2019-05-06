@@ -108,27 +108,33 @@
 
 
 
-  <meta name="description" content="本文主要分析ManageIQ的工程结构，明确Provider的作用（将云服务商API获取的数据转变为符合ManageIQ需求的数据）。 ManageIQ的工程结构ManageIQ的工程结构示意图如下">
-<meta name="keywords" content="manageiq">
+  <meta name="description" content="物联网的概念互联网中，我们可以使用手机、平板电脑、笔记本电脑或者台式机去访问互联网提供的各种服务。 随着互联网的不断发展，接入互联网的设备不在局限与手机、电脑之类的终端。增加了一些新的设备，例如：智能家电、汽车(导航系统)等。随之而来的，便是物联网概念的提出。 物联网是物物互联的互联网。 其一，物联网的核心和基础仍然是互联网，是在互联网基础上的延伸和扩展的网络。 其二，其用户端延伸和扩展到了任何物">
+<meta name="keywords" content="handle">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ManageIQ Provider开发（四）：ManageIQ的工程结构">
-<meta property="og:url" content="https://yaoxv.github.io/2019/02/26/manageiq-project-layout/index.html">
+<meta property="og:title" content="Handle协议分析">
+<meta property="og:url" content="https://yaoxv.github.io/2019/05/06/handle-system-overview/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="本文主要分析ManageIQ的工程结构，明确Provider的作用（将云服务商API获取的数据转变为符合ManageIQ需求的数据）。 ManageIQ的工程结构ManageIQ的工程结构示意图如下">
+<meta property="og:description" content="物联网的概念互联网中，我们可以使用手机、平板电脑、笔记本电脑或者台式机去访问互联网提供的各种服务。 随着互联网的不断发展，接入互联网的设备不在局限与手机、电脑之类的终端。增加了一些新的设备，例如：智能家电、汽车(导航系统)等。随之而来的，便是物联网概念的提出。 物联网是物物互联的互联网。 其一，物联网的核心和基础仍然是互联网，是在互联网基础上的延伸和扩展的网络。 其二，其用户端延伸和扩展到了任何物">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://blog-1251789414.cos.ap-shanghai.myqcloud.com/manageiq/manageiq-project-layout-1.png">
-<meta property="og:updated_time" content="2019-03-02T03:07:11.701Z">
+<meta property="og:image" content="https://blog-1251789414.cos.ap-shanghai.myqcloud.com/handle%20system%20overview/handle-system-overview-7.png">
+<meta property="og:image" content="https://blog-1251789414.cos.ap-shanghai.myqcloud.com/handle%20system%20overview/handle-system-overview-1.png">
+<meta property="og:image" content="https://blog-1251789414.cos.ap-shanghai.myqcloud.com/handle%20system%20overview/handle-system-overview-2.png">
+<meta property="og:image" content="https://blog-1251789414.cos.ap-shanghai.myqcloud.com/handle%20system%20overview/handle-system-overview-3.png">
+<meta property="og:image" content="https://blog-1251789414.cos.ap-shanghai.myqcloud.com/handle%20system%20overview/handle-system-overview-4.png">
+<meta property="og:image" content="https://blog-1251789414.cos.ap-shanghai.myqcloud.com/handle%20system%20overview/handle-system-overview-5.png">
+<meta property="og:image" content="https://blog-1251789414.cos.ap-shanghai.myqcloud.com/handle%20system%20overview/handle-system-overview-6.png">
+<meta property="og:updated_time" content="2019-05-06T09:12:58.559Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ManageIQ Provider开发（四）：ManageIQ的工程结构">
-<meta name="twitter:description" content="本文主要分析ManageIQ的工程结构，明确Provider的作用（将云服务商API获取的数据转变为符合ManageIQ需求的数据）。 ManageIQ的工程结构ManageIQ的工程结构示意图如下">
-<meta name="twitter:image" content="https://blog-1251789414.cos.ap-shanghai.myqcloud.com/manageiq/manageiq-project-layout-1.png">
+<meta name="twitter:title" content="Handle协议分析">
+<meta name="twitter:description" content="物联网的概念互联网中，我们可以使用手机、平板电脑、笔记本电脑或者台式机去访问互联网提供的各种服务。 随着互联网的不断发展，接入互联网的设备不在局限与手机、电脑之类的终端。增加了一些新的设备，例如：智能家电、汽车(导航系统)等。随之而来的，便是物联网概念的提出。 物联网是物物互联的互联网。 其一，物联网的核心和基础仍然是互联网，是在互联网基础上的延伸和扩展的网络。 其二，其用户端延伸和扩展到了任何物">
+<meta name="twitter:image" content="https://blog-1251789414.cos.ap-shanghai.myqcloud.com/handle%20system%20overview/handle-system-overview-7.png">
 
 
 
 
 
 
-  <link rel="canonical" href="https://yaoxv.github.io/2019/02/26/manageiq-project-layout/">
+  <link rel="canonical" href="https://yaoxv.github.io/2019/05/06/handle-system-overview/">
 
 
 
@@ -138,7 +144,7 @@
   };
 </script>
 
-  <title>ManageIQ Provider开发（四）：ManageIQ的工程结构 | Blog</title>
+  <title>Handle协议分析 | Blog</title>
   
 
 
@@ -339,7 +345,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yaoxv.github.io/2019/02/26/manageiq-project-layout/">
+    <link itemprop="mainEntityOfPage" href="https://yaoxv.github.io/2019/05/06/handle-system-overview/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yaoxv">
@@ -356,7 +362,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">ManageIQ Provider开发（四）：ManageIQ的工程结构
+          <h2 class="post-title" itemprop="name headline">Handle协议分析
               
             
           </h2>
@@ -381,24 +387,12 @@
                 
               
 
-              <time title="创建时间：2019-02-26 11:24:30" itemprop="dateCreated datePublished" datetime="2019-02-26T11:24:30+08:00">2019-02-26</time>
+              <time title="创建时间：2019-05-06 15:55:25 / 修改时间：17:12:58" itemprop="dateCreated datePublished" datetime="2019-05-06T15:55:25+08:00">2019-05-06</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-03-02 11:07:11" itemprop="dateModified" datetime="2019-03-02T11:07:11+08:00">2019-03-02</time>
               
             
           </span>
@@ -415,7 +409,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/ManageIQ/" itemprop="url" rel="index"><span itemprop="name">ManageIQ</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/IoT/" itemprop="url" rel="index"><span itemprop="name">IoT</span></a></span>
 
                 
                 
@@ -429,7 +423,7 @@
 
           
           
-             <span id="/2019/02/26/manageiq-project-layout/" class="leancloud_visitors" data-flag-title="ManageIQ Provider开发（四）：ManageIQ的工程结构">
+             <span id="/2019/05/06/handle-system-overview/" class="leancloud_visitors" data-flag-title="Handle协议分析">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -460,18 +454,122 @@
       
 
       
-        <p>本文主要分析ManageIQ的工程结构，明确Provider的作用（将云服务商API获取的数据转变为符合ManageIQ需求的数据）。</p>
-<h4 id="ManageIQ的工程结构"><a href="#ManageIQ的工程结构" class="headerlink" title="ManageIQ的工程结构"></a>ManageIQ的工程结构</h4><p>ManageIQ的工程结构示意图如下</p>
+        <h4 id="物联网的概念"><a href="#物联网的概念" class="headerlink" title="物联网的概念"></a>物联网的概念</h4><p>互联网中，我们可以使用手机、平板电脑、笔记本电脑或者台式机去访问互联网提供的各种服务。</p>
+<p>随着互联网的不断发展，接入互联网的设备不在局限与手机、电脑之类的终端。增加了一些新的设备，例如：智能家电、汽车(导航系统)等。随之而来的，便是物联网概念的提出。</p>
+<p>物联网是物物互联的互联网。</p>
+<p>其一，物联网的核心和基础仍然是互联网，是在互联网基础上的延伸和扩展的网络。</p>
+<p>其二，其用户端延伸和扩展到了任何物品与物品之间，进行信息交换和通信，也就是物物相息。</p>
+<h4 id="物联网标识"><a href="#物联网标识" class="headerlink" title="物联网标识"></a>物联网标识</h4><p>智能家电、汽车等设备接入互联网，实质上是嵌入式系统接入了互联网，与传统互联网的依旧兼容。但是我们希望更多的物品都能接入网络，不仅是手机、电脑、嵌入式系统，还可以是一批货物、一本书籍、一部电影、一首音乐，甚至是一项技术、一个数据集，成为真正的物物互联。</p>
+<p>所以，物联网需要对联网的物品进行统一标识。需要标识的联网对象包括物理实体和虚拟对象。</p>
+<p>在互联网中，有MAC地址、ip地址、域名来对终端进行标识。</p>
+<p>在物联网中，使用<strong>数字对象标识符(Digital Object Identifier DOI )</strong> 对联网对象进行标识。</p>
+<h4 id="标识的解析"><a href="#标识的解析" class="headerlink" title="标识的解析"></a>标识的解析</h4><p>域名通过dns解析为IP地址。</p>
+<p>DOI通过<strong>Handle</strong>解析为IP地址或标识对象的信息。</p>
 <a id="more"></a>
-<p><img src="https://blog-1251789414.cos.ap-shanghai.myqcloud.com/manageiq/manageiq-project-layout-1.png" alt=""></p>
-<p>Provider的作用就是为了适配不同的云服务商所提供的数据，将其转变为符合ManageIQ的数据。</p>
-<p>Provider为了获取云服务商提供的数据，需要请求其各自的API。为了更好的解耦代码，Provider不直接与API进行交互，而是通过官方提供或开源的SDK进行交互。</p>
-<p>这些SDK不仅解耦了代码，还对API数据进行了初步的封装，将json转变为了类，方便了Provider进行调用。</p>
-<p>AMAZON-SDK为亚马逊官方提供的，功能比较齐全，代码量比较大，参照其开发自己需要的SDK比较费时费力；FOG-GOOGLE是开源的云服务器API交互SDK，基于FOG二次开发比较简单，快捷。</p>
-<h4 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h4><p><a href="https://github.com/ManageIQ/manageiq-providers-amazon" target="_blank" rel="noopener">ManageIQ-Providers-amazon</a></p>
-<p><a href="https://github.com/ManageIQ/manageiq-providers-google" target="_blank" rel="noopener">ManageIQ-Providers-google</a></p>
-<p><a href="https://github.com/fog/fog-google" target="_blank" rel="noopener">fog-google</a></p>
-<p><a href="https://github.com/aws/aws-sdk-ruby/tree/version-2" target="_blank" rel="noopener">amazon-sdk(v2)</a></p>
+<h4 id="Handle系统"><a href="#Handle系统" class="headerlink" title="Handle系统"></a>Handle系统</h4><h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><p>​    Handle系统是一个用来提供一种高效、可扩展、安全的全球名字解析服务的分布式信息系统。</p>
+<h5 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h5><ul>
+<li><p>唯一性 Uniqueness   </p>
+<ul>
+<li>每一个handle在系统中是全球唯一的</li>
+</ul>
+</li>
+<li><p>持久性 Persistence   </p>
+<ul>
+<li>一个handle并不依赖于实体自身，handle系统是建立了handle与实体间的联系、对应关系</li>
+</ul>
+</li>
+<li><p>多实例 Multiple Instances </p>
+<ul>
+<li>一个handle可以指向一个资源对应的多个实体 </li>
+<li>一个网络服务可以用一个handle定义多个服务入口，以达到负载均衡</li>
+</ul>
+</li>
+<li><p>多属性 Multiple Attributes</p>
+<ul>
+<li>DNS ：   域名  ——–&gt;   IP</li>
+<li>Handle : DOI   ——–&gt;    IP、URL、Email、权限、其他自定义属性        </li>
+</ul>
+</li>
+<li><p>可扩展 Extensible Namespace</p>
+<ul>
+<li>本地的handle系统节点可以加入全球handle系统节点</li>
+</ul>
+</li>
+<li><p>全球化支持 International Support</p>
+<ul>
+<li>handle系统使用Unicode3.0  支持多语言的字符集</li>
+</ul>
+</li>
+<li><p>分布式 Distributed Service Model</p>
+</li>
+<li><p>安全的名字解析服务 Secured Name Service</p>
+<ul>
+<li>可以确保数据的完整性、机密性</li>
+</ul>
+</li>
+<li><p>分布式的管理服务 Distributed Administration Service</p>
+<ul>
+<li>每个handle节点都可以定义自己的管理员</li>
+</ul>
+</li>
+</ul>
+<h5 id="形式"><a href="#形式" class="headerlink" title="形式"></a>形式</h5><p><img src="https://blog-1251789414.cos.ap-shanghai.myqcloud.com/handle%20system%20overview/handle-system-overview-7.png" alt=""></p>
+<p>HandleNamingAuthority为DOI号的前缀，HandleLocalName为后缀。</p>
+<p>所有的 DOI 号前缀以 10 开头，并且按顺序分配，无需要保留的前缀。后缀是由该 DOI 号的所有人或机构分配的本地字符，代表其所有人或机构。</p>
+<p>例如：<code>10.1045/may99-payette</code> 是一篇发表在D-Lib杂志上的文章的handle标识。</p>
+<p><img src="https://blog-1251789414.cos.ap-shanghai.myqcloud.com/handle%20system%20overview/handle-system-overview-1.png" alt=""></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"responseCode"</span> : <span class="number">1</span> ,</span><br><span class="line">     <span class="attr">"handle"</span> : <span class="string">"10.1045/may99-payette"</span> ,</span><br><span class="line">     <span class="attr">"values"</span> :[</span><br><span class="line">        &#123;</span><br><span class="line">             <span class="attr">"index"</span> : <span class="number">100</span> ,</span><br><span class="line">             <span class="attr">"type"</span> : <span class="string">"HS_ADMIN"</span> ,</span><br><span class="line">             <span class="attr">"data"</span> :&#123;</span><br><span class="line">                 <span class="attr">"format"</span> : <span class="string">"admin"</span> ,</span><br><span class="line">                 <span class="attr">"value"</span> :&#123;</span><br><span class="line">                     <span class="attr">"handle"</span> : <span class="string">"0.NA/10.1045"</span> ,</span><br><span class="line">                     <span class="attr">"index"</span> : <span class="number">200</span> ,</span><br><span class="line">                     <span class="attr">"permissions"</span> : <span class="string">"011111111111"</span> </span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">             <span class="attr">"ttl"</span> : <span class="number">86400</span> ,</span><br><span class="line">             <span class="attr">"timestamp"</span> : <span class="string">"2000-04-14T07:25:21Z"</span> </span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">             <span class="attr">"index"</span> : <span class="number">4</span> ,</span><br><span class="line">             <span class="attr">"type"</span> : <span class="string">"URL"</span> ,</span><br><span class="line">             <span class="attr">"data"</span> :&#123;</span><br><span class="line">                 <span class="attr">"format"</span> : <span class="string">"string"</span> ,</span><br><span class="line">                 <span class="attr">"value"</span> : <span class="string">"http://www.dlib.org/dlib/may99/payette/05payette.html"</span> </span><br><span class="line">            &#125;,</span><br><span class="line">             <span class="attr">"ttl"</span> : <span class="number">86400</span> ,</span><br><span class="line">             <span class="attr">"timestamp"</span> : <span class="string">"2003-02-07T18:49:14Z"</span> </span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">             <span class="attr">"index"</span> : <span class="number">8</span> ,</span><br><span class="line">             <span class="attr">"type"</span> : <span class="string">"700050"</span> ,</span><br><span class="line">             <span class="attr">"data"</span> :&#123;</span><br><span class="line">                 <span class="attr">"format"</span> : <span class="string">"string"</span> ,</span><br><span class="line">                 <span class="attr">"value"</span> : <span class="string">"200302031035"</span> </span><br><span class="line">            &#125;,</span><br><span class="line">             <span class="attr">"ttl"</span> : <span class="number">86400</span> ,</span><br><span class="line">             <span class="attr">"timestamp"</span> : <span class="string">"2003-02-07T18:49:15Z"</span> </span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>index</strong>              每个handle value的编号</li>
+<li><strong>type</strong>                type标识handle value的类型，需要注册，防止重复</li>
+<li><strong>permissions</strong>  handle管理员的权限</li>
+<li><strong>TTL</strong>                  可以被缓存的时间</li>
+<li><strong>timestamp</strong>    最后修改信息的时间</li>
+</ul>
+<h5 id="分布式"><a href="#分布式" class="headerlink" title="分布式"></a>分布式</h5><p>handle系统是分布式的</p>
+<p>handle节点分为<strong>Global Handle Registry(GHR)</strong>和 <strong>Local Handle Services (LHSs)</strong></p>
+<p><img src="https://blog-1251789414.cos.ap-shanghai.myqcloud.com/handle%20system%20overview/handle-system-overview-2.png" alt=""></p>
+<p>所以查询时，需要先找到DOI前缀对应的LHS，再查询其后缀对应的信息。</p>
+<p><img src="https://blog-1251789414.cos.ap-shanghai.myqcloud.com/handle%20system%20overview/handle-system-overview-3.png" alt=""></p>
+<h4 id="DNS-amp-DNS-SEC"><a href="#DNS-amp-DNS-SEC" class="headerlink" title="DNS &amp; DNS SEC"></a>DNS &amp; DNS SEC</h4><h5 id="DNS的缺点"><a href="#DNS的缺点" class="headerlink" title="DNS的缺点"></a>DNS的缺点</h5><p><img src="https://blog-1251789414.cos.ap-shanghai.myqcloud.com/handle%20system%20overview/handle-system-overview-4.png" alt=""></p>
+<p>DNS 协议缺乏必要的认证机制，客户无法确认接收到的信息的真实性和权威性，而且会遭到“ 中间人 ”攻击，其正确性也无法判断。</p>
+<h5 id="DNS-SEC"><a href="#DNS-SEC" class="headerlink" title="DNS SEC"></a>DNS SEC</h5><p>DNS SEC全称Domain Name System Security Extensions，即DNS安全扩展，是由IETF提供的一系列DNS安全认证的机制。它提供一种可以<strong>验证应答信息真实性和完整性的机制</strong>，利用密码技术，使得域名解析服务器可以验证它所收到的应答(包括域名不存在的应答)是否来自于真实的服务器，或者是否在传输过程中被篡改过。</p>
+<p>通过DNSSEC的部署，可以增强对DNS域名服务器的身份认证，进而帮助防止DNS缓存污染等攻击。</p>
+<p>DNSSEC通过公钥密码技术对DNS中的信息创建密码签名，为DNS信息同时提供认证和信息完整性检查，它的实施步骤如下：</p>
+<ol>
+<li>DNS服务器收到DNS查询请求后，用散列函数将要回复DNS报文的内容进行散列运算，得到“内容摘要”，使用私匙加密后再附加到DNS报文中；</li>
+<li>DNS查询请求者接收到报文后，利用公匙解密收到的“内容摘要”，再利用散列函数计算一次DNS查询请求报文中的“内容摘要”，两者对比；</li>
+<li>若相同，就可以确认接收到的DNS信息是正确的DNS响应；若验证失败，则表明这一报文可能是假冒的，或者在传输过程、缓存过程中被篡改了。</li>
+</ol>
+<p>为此，DNS SEC添加了一些内容来实现对DNS的安全性改进。</p>
+<ul>
+<li><strong>RRSIG(Resource Record Signature)记录</strong>：存储资源记录集合(RRSets)的数字签名</li>
+<li><strong>DNSKEY(DNS Public Key)记录</strong>：存储公开密钥</li>
+<li><strong>DS(Delegation Signer)记录</strong>：存储DNSKEY的散列值，用于验证DNSKEY的真实性，从而建立一个信任链</li>
+<li><strong>NSEC(Next Secure)记录</strong>：用于应答那些不存在的资源记录</li>
+</ul>
+<p>使用linux系统中的dig命令可以看到查询DNS的过程,可以看到29-30行，其中包含了DS记录和RRSIG记录，说明DNS服务器支持DNS SEC。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">~$ dig @223.5.5.5 xidian.edu.cn +trace</span><br><span class="line"></span><br><span class="line">; &lt;&lt;&gt;&gt; DiG 9.11.3-1ubuntu1.7-Ubuntu &lt;&lt;&gt;&gt; @223.5.5.5 xidian.edu.cn +trace</span><br><span class="line">; (1 server found)</span><br><span class="line">;; global options: +cmd</span><br><span class="line">.                       241418  IN      NS      m.root-servers.net.</span><br><span class="line">.                       241418  IN      NS      j.root-servers.net.</span><br><span class="line">.                       241418  IN      NS      i.root-servers.net.</span><br><span class="line">.                       241418  IN      NS      a.root-servers.net.</span><br><span class="line">.                       241418  IN      NS      k.root-servers.net.</span><br><span class="line">.                       241418  IN      NS      g.root-servers.net.</span><br><span class="line">.                       241418  IN      NS      c.root-servers.net.</span><br><span class="line">.                       241418  IN      NS      b.root-servers.net.</span><br><span class="line">.                       241418  IN      NS      e.root-servers.net.</span><br><span class="line">.                       241418  IN      NS      f.root-servers.net.</span><br><span class="line">.                       241418  IN      NS      h.root-servers.net.</span><br><span class="line">.                       241418  IN      NS      d.root-servers.net.</span><br><span class="line">.                       241418  IN      NS      l.root-servers.net.</span><br><span class="line">;; Received 228 bytes from 223.5.5.5#53(223.5.5.5) in 56 ms</span><br><span class="line"></span><br><span class="line">cn.                     172800  IN      NS      a.dns.cn.</span><br><span class="line">cn.                     172800  IN      NS      b.dns.cn.</span><br><span class="line">cn.                     172800  IN      NS      c.dns.cn.</span><br><span class="line">cn.                     172800  IN      NS      d.dns.cn.</span><br><span class="line">cn.                     172800  IN      NS      e.dns.cn.</span><br><span class="line">cn.                     172800  IN      NS      f.dns.cn.</span><br><span class="line">cn.                     172800  IN      NS      g.dns.cn.</span><br><span class="line">cn.                     172800  IN      NS      ns.cernet.net.</span><br><span class="line">cn.                     86400   IN      DS      57724 8 2 5D0423633EB24A499BE78AA22D1C0C9BA36218FF49FD95A4CDF1A4AD 97C67044</span><br><span class="line">cn.                     86400   IN      RRSIG   DS 8 1 86400 20190519050000 20190506040000 25266 . eCDU1Z+rBMKnkbKR/TpKEqAYcY0EEtyMHHeladAciGmKeb3IAzHQF5QV PFDco/hmTswItIMEI6FmuAO51Sy/AQnuVBU+jpzr8Kc/sDUCDLzbxL7n M0aTy152Xp3eJBXszpYAMTnv7U8W+RUvpyzZhdDfeJ+r8mGrR1EPWZHJ MwzEbjnKD3nA3nVnoz0QzJ2x/oilNvU/Wka8CebcpIiKyzkUooi2gGcb 38QLQS5kBmnHJuo+k1e6eFPFw5GSsErrOUBeqzGpP4BmxWuLWEBjV7HI 5oACSJf0d1gfa7gEoPm6oHQ+SUewOe42O0hp34YxwXEXZWv3kkfHDYmT x1EYRA==</span><br><span class="line">;; Received 704 bytes from 192.5.5.241#53(f.root-servers.net) in 4 ms</span><br><span class="line"></span><br><span class="line">edu.cn.                 172800  IN      NS      deneb.dfn.de.</span><br><span class="line">edu.cn.                 172800  IN      NS      ns2.cernet.net.</span><br><span class="line">edu.cn.                 172800  IN      NS      ns2.cuhk.hk.</span><br><span class="line">edu.cn.                 172800  IN      NS      dns.edu.cn.</span><br><span class="line">edu.cn.                 172800  IN      NS      dns2.edu.cn.</span><br><span class="line">3QDAQA092EE5BELP64A74EBNB8J53D7E.cn. 21600 IN NSEC3 1 1 10 AEF123AB 3QLMP0QRNQ96G5AFGOPNB7U7IJ4MBP4B  NS SOA RRSIG DNSKEY NSEC3PARAM</span><br><span class="line">3QDAQA092EE5BELP64A74EBNB8J53D7E.cn. 21600 IN RRSIG NSEC3 8 2 21600 20190515195452 20190415192259 31725 cn. q7KTq++lryMndugKWjnCrtbKvx3984P8Uo1e8of8iCNP5v8FLjTe+afE 75ZFfDmkH6XVw9clBETGpWZUuewgSIpVEmZXyIC3j9zf0RSFvq8hJcmC vjgWume2UnUme85LhSFm+rLtl1Waf3lgBHHf+BxnWsoqtpcolJp286QN bI0=</span><br><span class="line">39RHJMG7OQR8QCTU59OBQ62NRDQE045I.cn. 21600 IN NSEC3 1 1 10 AEF123AB 3A62EEG57NMMFHK1O7347GBEBUJUESOH  CNAME RRSIG</span><br><span class="line">39RHJMG7OQR8QCTU59OBQ62NRDQE045I.cn. 21600 IN RRSIG NSEC3 8 2 21600 20190603183139 20190504180539 31725 cn. mej1hXtnBzBTj6ywqsbnNh+LX2XbFLJ5rp2KhdTyzlINKRpYCqdgAzgD 9z8gCk/Bw+6S8d6dg/E1L4n8wmJRk83J+5YLsZMHioN5b12PGOZyszpz LoMmqCT+okNllxSk0xMNQfE+K6Bumw/jEM/RbTq/UX+8UMyVuHRGiEy0 voM=</span><br><span class="line">;; Received 681 bytes from 203.119.28.1#53(d.dns.cn) in 14 ms</span><br><span class="line"></span><br><span class="line">xidian.edu.cn.          172800  IN      NS      ns2.xidian.edu.cn.</span><br><span class="line">xidian.edu.cn.          172800  IN      NS      ns1.xidian.edu.cn.</span><br><span class="line">ET1HHHLVN75UC5DM4LOBLMCMCAT3ENGN.edu.cn. 21600 IN NSEC3 1 0 10 AFFF ETAHAEFRR4256IDB6UFN97I4N2LUONED  NS</span><br><span class="line">ET1HHHLVN75UC5DM4LOBLMCMCAT3ENGN.edu.cn. 21600 IN RRSIG NSEC3 8 3 21600 20190527134345 20190427133441 21204 edu.cn. AvP6N5obx+m6gFwio1Q2kdN2e4Y4NG5WSwvpVwg8gerkAMhaVZLlmYdG 7aIDQl0n1xsV0IcMEbSPvqbA56d9L2LllYJvA+UNYb1nQmxHq7EOrWBN 6Z2pF3HqcORm2uwOThuevCvftoy5ocXvJJlJYGKX8ggrCDSF/z40G5CV GW0=</span><br><span class="line">;; Received 352 bytes from 192.76.176.9#53(deneb.dfn.de) in 273 ms</span><br><span class="line"></span><br><span class="line">xidian.edu.cn.          3600    IN      SOA     ns1.xidian.edu.cn. root.xidian.edu.cn. 2019042901 30 150 115200 3600</span><br><span class="line">;; Received 87 bytes from 61.150.43.66#53(ns2.xidian.edu.cn) in 164 ms</span><br></pre></td></tr></table></figure>
+<p>​    DNS SEC虽然保证了DNS信息的真实性和完整性，但并没有实现机密性，即DNS 会对不管任何人提出的请求作出同样的响应。因此所有的DNS数据都是可见的。所以DNSSEC不能支持机密性、访问权限控制或者其他区分访问者身份的服务。</p>
+<h4 id="Handle的安全保证"><a href="#Handle的安全保证" class="headerlink" title="Handle的安全保证"></a>Handle的安全保证</h4><p>​    默认的情况下, Handle 客户端解析时不需要任何身份认证。然而请求隐私数据, 以及进行远程管理操作时都需要对客 户端进行相应的认证。服务器将会决定客户端是否有足够的 权限来访问这些隐私数据或进行一些远程管理的操作。 进行身份认证时, Handle 服务器会发起一个 Challenge 请求给需要验证的客户端。为了完成认证的过程, 客户端需要返 回一个正确的Response消息给服务器, 以说明自己是正确的管理员。Handle 服务器只有在收到正确的 Response之后才会完成客户端先前提出的请求。 Handle 客户端可以选择公/私钥的方式来进行认证。Handle系统的认证过程也可以通过第三方认证服 务来执行。为了保证数据的完整性, 客户端需要服务器对返回 的响应做签名。 客户端也可以与服务器建立一个安全的对话期( Session) , 这样同一个对话期内的通信过程将被加密。</p>
+<p><img src="https://blog-1251789414.cos.ap-shanghai.myqcloud.com/handle%20system%20overview/handle-system-overview-5.png" alt=""></p>
+<ul>
+<li>步骤1：客户端发起请求</li>
+<li>步骤2：服务端收到客户端请求，返回会话ID和挑战信息（随机字符串）</li>
+<li>步骤3：客户端响应挑战，返回会话ID、挑战的响应、管理员索引(Handle系统可以有多个管理员，告诉服务端自己是哪个管理员)</li>
+<li>步骤4：服务端收到客户端以私钥的方式进行验证的请求，将挑战的响应发给可信的key-server来认证</li>
+<li>步骤5：key-server返回认证结果</li>
+<li>步骤6：服务器告诉客户端确认完成认证</li>
+</ul>
+<p>在步骤3中，客户端可以选择公钥或私钥验证的方式。</p>
+<p>当认证方式为公钥时，即AuthenticationType为HS_PUBKEY，挑战的响应为Sig(H(ServerChallenge))。服务端收到后，根据管理员的公钥对其验证，通过后执行步骤6。</p>
+<p>若认证方式为私钥时，即AuthenticationType为HS_SECKEY，挑战的响应为<code>MD5_Hash(&lt;SecretKey&gt; + &lt;ServerChallenge&gt; + &lt;SecretKey&gt;)</code>或 <code>SHA-1_Hash(&lt;SecretKey&gt; + &lt;ServerChallenge&gt; + &lt;SecretKey&gt;)</code></p>
+<p>或者使用HMAC。此时，服务端无法验证，需要执行步骤4。</p>
+<p>通过验证的客户端便可以进行权限范围内的操作。所以完整的Handle请求流程如下图。</p>
+<p><img src="https://blog-1251789414.cos.ap-shanghai.myqcloud.com/handle%20system%20overview/handle-system-overview-6.png" alt=""></p>
+<h4 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h4><p><a href="https://www.ietf.org/rfc/rfc3650.txt" target="_blank" rel="noopener">[RFC 3650] Handle System Overview</a> </p>
+<p><a href="https://www.ietf.org/rfc/rfc3651.txt" target="_blank" rel="noopener">[RFC 3651] Handle System Namespace and Service Definition</a></p>
+<p><a href="https://www.ietf.org/rfc/rfc3651.txt" target="_blank" rel="noopener">[RFC 3652] Handle System Protocol (ver 2.1) Specification</a></p>
 
       
     </div>
@@ -492,7 +590,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/manageiq/" rel="tag"># manageiq</a>
+            <a href="/tags/handle/" rel="tag"># handle</a>
           
         </div>
       
@@ -505,8 +603,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/11/manageiq-local-ui/" rel="next" title="ManageIQ Provider开发（三）：使用自定义前端页面">
-                <i class="fa fa-chevron-left"></i> ManageIQ Provider开发（三）：使用自定义前端页面
+              <a href="/2019/03/30/springboot-use-@Value-in-filter/" rel="next" title="springboot在filter中使用@Value注解">
+                <i class="fa fa-chevron-left"></i> springboot在filter中使用@Value注解
               </a>
             
           </div>
@@ -514,10 +612,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/02/manageiq-providers-google-layout/" rel="prev" title="ManageIQ Provider开发（五）：Provider-google的代码结构">
-                ManageIQ Provider开发（五）：Provider-google的代码结构 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -716,7 +810,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#ManageIQ的工程结构"><span class="nav-number">1.</span> <span class="nav-text">ManageIQ的工程结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考文档"><span class="nav-number">2.</span> <span class="nav-text">参考文档</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#物联网的概念"><span class="nav-number">1.</span> <span class="nav-text">物联网的概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#物联网标识"><span class="nav-number">2.</span> <span class="nav-text">物联网标识</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#标识的解析"><span class="nav-number">3.</span> <span class="nav-text">标识的解析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Handle系统"><span class="nav-number">4.</span> <span class="nav-text">Handle系统</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#定义"><span class="nav-number">4.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#特点"><span class="nav-number">4.2.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#形式"><span class="nav-number">4.3.</span> <span class="nav-text">形式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分布式"><span class="nav-number">4.4.</span> <span class="nav-text">分布式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DNS-amp-DNS-SEC"><span class="nav-number">5.</span> <span class="nav-text">DNS &amp; DNS SEC</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#DNS的缺点"><span class="nav-number">5.1.</span> <span class="nav-text">DNS的缺点</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#DNS-SEC"><span class="nav-number">5.2.</span> <span class="nav-text">DNS SEC</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Handle的安全保证"><span class="nav-number">6.</span> <span class="nav-text">Handle的安全保证</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考文档"><span class="nav-number">7.</span> <span class="nav-text">参考文档</span></a></li></ol></div>
             
 
           </div>

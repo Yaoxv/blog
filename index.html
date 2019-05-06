@@ -16,7 +16,7 @@
 
 <html class="theme-next pisces use-motion" lang="zh-CN">
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="UTF-8">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
@@ -179,7 +179,7 @@
       .logo-line-after i { right: initial; }
     }
   </style>
-</noscript>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </head>
 
@@ -190,7 +190,7 @@
     
   
 
-  <div class="container sidebar-position-left 
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left 
   page-home">
     <div class="headband"></div>
 
@@ -238,7 +238,7 @@
           
           <li class="menu-item menu-item-tags">
     <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">13</span></a>
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">14</span></a>
   </li>
         
         
@@ -246,7 +246,7 @@
           
           <li class="menu-item menu-item-categories">
     <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">7</span></a>
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">8</span></a>
   </li>
         
         
@@ -254,7 +254,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">8</span></a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">9</span></a>
   </li>
 
       
@@ -334,6 +334,191 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yaoxv.github.io/2019/05/06/handle-system-overview/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yaoxv">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/pokemon.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/06/handle-system-overview/" itemprop="url">
+                  Handle协议分析
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-05-06 15:55:25 / 修改时间：17:12:58" itemprop="dateCreated datePublished" datetime="2019-05-06T15:55:25+08:00">2019-05-06</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/IoT/" itemprop="url" rel="index"><span itemprop="name">IoT</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/05/06/handle-system-overview/" class="leancloud_visitors" data-flag-title="Handle协议分析">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h4 id="物联网的概念"><a href="#物联网的概念" class="headerlink" title="物联网的概念"></a>物联网的概念</h4><p>互联网中，我们可以使用手机、平板电脑、笔记本电脑或者台式机去访问互联网提供的各种服务。</p>
+<p>随着互联网的不断发展，接入互联网的设备不在局限与手机、电脑之类的终端。增加了一些新的设备，例如：智能家电、汽车(导航系统)等。随之而来的，便是物联网概念的提出。</p>
+<p>物联网是物物互联的互联网。</p>
+<p>其一，物联网的核心和基础仍然是互联网，是在互联网基础上的延伸和扩展的网络。</p>
+<p>其二，其用户端延伸和扩展到了任何物品与物品之间，进行信息交换和通信，也就是物物相息。</p>
+<h4 id="物联网标识"><a href="#物联网标识" class="headerlink" title="物联网标识"></a>物联网标识</h4><p>智能家电、汽车等设备接入互联网，实质上是嵌入式系统接入了互联网，与传统互联网的依旧兼容。但是我们希望更多的物品都能接入网络，不仅是手机、电脑、嵌入式系统，还可以是一批货物、一本书籍、一部电影、一首音乐，甚至是一项技术、一个数据集，成为真正的物物互联。</p>
+<p>所以，物联网需要对联网的物品进行统一标识。需要标识的联网对象包括物理实体和虚拟对象。</p>
+<p>在互联网中，有MAC地址、ip地址、域名来对终端进行标识。</p>
+<p>在物联网中，使用<strong>数字对象标识符(Digital Object Identifier DOI )</strong> 对联网对象进行标识。</p>
+<h4 id="标识的解析"><a href="#标识的解析" class="headerlink" title="标识的解析"></a>标识的解析</h4><p>域名通过dns解析为IP地址。</p>
+<p>DOI通过<strong>Handle</strong>解析为IP地址或标识对象的信息。</p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/05/06/handle-system-overview/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+         
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://yaoxv.github.io/2019/03/30/springboot-use-@Value-in-filter/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -380,7 +565,7 @@
                 
               
 
-              <time title="创建时间：2019-03-30 10:13:39 / 修改时间：10:30:30" itemprop="dateCreated datePublished" datetime="2019-03-30T10:13:39+08:00">2019-03-30</time>
+              <time title="创建时间：2019-03-30 10:13:39 / 修改时间：10:33:56" itemprop="dateCreated datePublished" datetime="2019-03-30T10:13:39+08:00">2019-03-30</time>
             
 
             
@@ -451,8 +636,11 @@
           
             <p>由于filter中需要对请求进行重定向，且开发测试环境的重定向url不同，因此需要使用@Value来获取不同环境中的重定向地址。</p>
 <p>但是发现@Value获取的值为<code>null</code>,最后找到了原因，是因为filter不是spring bean，@Value无法生效。</p>
-<p>解决方法：1.将filter通过依赖注入FilterRegistrationBean</p>
-<p>​            2.使用DelegatingFilterProxy</p>
+<p>解决方法：</p>
+<ol>
+<li>将filter通过依赖注入FilterRegistrationBean</li>
+<li>使用DelegatingFilterProxy</li>
+</ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"># 方法一</span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FilterConfig</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> FilterRegistrationBean <span class="title">registerFilter</span><span class="params">(BasicFilter filter)</span> </span>&#123; </span><br><span class="line">        FilterRegistrationBean registration = <span class="keyword">new</span> FilterRegistrationBean();</span><br><span class="line">        registration.setFilter(filter); </span><br><span class="line">        registration.addUrlPatterns(<span class="string">"/secure/*"</span>);</span><br><span class="line">        <span class="keyword">return</span> registration;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 方法二</span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FilterConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Filter <span class="title">BasicFilter</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> BasicFilter();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> FilterRegistrationBean <span class="title">registerFilter</span><span class="params">()</span> </span>&#123; </span><br><span class="line">        FilterRegistrationBean registration = <span class="keyword">new</span> FilterRegistrationBean();</span><br><span class="line">        registration.setFilter(<span class="keyword">new</span> DelegatingFilterProxy(<span class="string">"BasicFilter"</span>)); </span><br><span class="line">        registration.addUrlPatterns(<span class="string">"/secure/*"</span>);</span><br><span class="line">        <span class="keyword">return</span> registration;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
           
@@ -1836,7 +2024,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1863,7 +2051,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">3</span>
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -1902,7 +2092,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">8</span>
+                      
+                    
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -2601,7 +2793,7 @@
         }, 300)
       }).append(e)
     })
-  </script>
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 </body>
