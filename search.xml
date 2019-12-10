@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[java-move-file-in-docker]]></title>
+    <title><![CDATA[Java移动文件至docker的数据卷]]></title>
     <url>%2F2019%2F12%2F10%2Fjava-move-file-in-docker%2F</url>
     <content type="text"><![CDATA[需求将一个文件从根目录下移动到/opt/foo/目录下，并且此文件需要在docker上持久化存储 问题移动文件使用了File#renameTo(File dest),在docker没有挂载数据卷时可以正常移动文件。 但是当docker把/opt/foo/目录挂载为数据卷后，File#renameTo()方法就失效了 原因 Many aspects of the behavior of this method are inherently platform-dependent: The rename operation might not be able to move a file from one filesystem to another, it might not be atomic, and it might not succeed if a file with the destination abstract pathname already exists. The return value should always be checked to make sure that the rename operation was successful. Oracle JDK的官方文档上说明了File#renameTo()在不同的filesystem上可能会失效 解决方法使用Files#move()]]></content>
       <categories>
         <category>Java</category>
       </categories>
       <tags>
-        <tag>java docker</tag>
+        <tag>docker</tag>
+        <tag>java</tag>
       </tags>
   </entry>
   <entry>

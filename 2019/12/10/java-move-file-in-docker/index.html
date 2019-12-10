@@ -109,16 +109,16 @@
 
 
   <meta name="description" content="需求将一个文件从根目录下移动到/opt/foo/目录下，并且此文件需要在docker上持久化存储 问题移动文件使用了File#renameTo(File dest),在docker没有挂载数据卷时可以正常移动文件。 但是当docker把/opt/foo/目录挂载为数据卷后，File#renameTo()方法就失效了 原因 Many aspects of the behavior of this m">
-<meta name="keywords" content="java docker">
+<meta name="keywords" content="docker,java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java-move-file-in-docker">
+<meta property="og:title" content="Java移动文件至docker的数据卷">
 <meta property="og:url" content="https://yaoxv.github.io/2019/12/10/java-move-file-in-docker/index.html">
 <meta property="og:site_name" content="Blog">
 <meta property="og:description" content="需求将一个文件从根目录下移动到/opt/foo/目录下，并且此文件需要在docker上持久化存储 问题移动文件使用了File#renameTo(File dest),在docker没有挂载数据卷时可以正常移动文件。 但是当docker把/opt/foo/目录挂载为数据卷后，File#renameTo()方法就失效了 原因 Many aspects of the behavior of this m">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-10T09:02:40.932Z">
+<meta property="og:updated_time" content="2019-12-10T09:07:09.872Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java-move-file-in-docker">
+<meta name="twitter:title" content="Java移动文件至docker的数据卷">
 <meta name="twitter:description" content="需求将一个文件从根目录下移动到/opt/foo/目录下，并且此文件需要在docker上持久化存储 问题移动文件使用了File#renameTo(File dest),在docker没有挂载数据卷时可以正常移动文件。 但是当docker把/opt/foo/目录挂载为数据卷后，File#renameTo()方法就失效了 原因 Many aspects of the behavior of this m">
 
 
@@ -136,7 +136,7 @@
   };
 </script>
 
-  <title>java-move-file-in-docker | Blog</title>
+  <title>Java移动文件至docker的数据卷 | Blog</title>
   
 
 
@@ -241,7 +241,7 @@
           
           <li class="menu-item menu-item-tags">
     <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">18</span></a>
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">17</span></a>
   </li>
         
         
@@ -354,7 +354,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">java-move-file-in-docker
+          <h2 class="post-title" itemprop="name headline">Java移动文件至docker的数据卷
               
             
           </h2>
@@ -379,7 +379,7 @@
                 
               
 
-              <time title="创建时间：2019-12-10 16:45:05 / 修改时间：17:02:40" itemprop="dateCreated datePublished" datetime="2019-12-10T16:45:05+08:00">2019-12-10</time>
+              <time title="创建时间：2019-12-10 16:45:05 / 修改时间：17:07:09" itemprop="dateCreated datePublished" datetime="2019-12-10T16:45:05+08:00">2019-12-10</time>
             
 
             
@@ -415,7 +415,7 @@
 
           
           
-             <span id="/2019/12/10/java-move-file-in-docker/" class="leancloud_visitors" data-flag-title="java-move-file-in-docker">
+             <span id="/2019/12/10/java-move-file-in-docker/" class="leancloud_visitors" data-flag-title="Java移动文件至docker的数据卷">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -474,7 +474,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/java-docker/" rel="tag"># java docker</a>
+            <a href="/tags/docker/" rel="tag"># docker</a>
+          
+            <a href="/tags/java/" rel="tag"># java</a>
           
         </div>
       
@@ -656,9 +658,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
